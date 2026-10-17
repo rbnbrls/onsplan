@@ -9,11 +9,11 @@ import { type Recipe } from '@/lib/recipes';
 export default function RecipeGuest({ recipe }: { recipe: Recipe }) {
     return (
         <div className="bg-background min-h-screen">
-            <Head title={`${recipe.title} · FamilyWell`} />
+            <Head title={`${recipe.title} · onsplan`} />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-5 p-4">
                 <div className="flex items-center gap-2 pt-2">
                     <span className="bg-tile text-tile-foreground flex size-7 items-center justify-center rounded-lg text-xs font-bold">FW</span>
-                    <span className="text-muted-foreground text-sm">FamilyWell · shared with you</span>
+                    <span className="text-muted-foreground text-sm">onsplan · shared with you</span>
                 </div>
                 <RecipeHeader recipe={recipe} />
                 <RecipeView recipe={recipe} />

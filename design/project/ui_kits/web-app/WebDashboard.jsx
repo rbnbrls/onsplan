@@ -1,5 +1,5 @@
-// FamilyWell Web · Core Dashboard — stat row, Today card, side rail.
-const { Card, Badge, Avatar, Checkbox, Button: FWButton } = window.FamilyWellDesignSystem_c7911f;
+// onsplan Web · Core Dashboard — stat row, Today card, side rail.
+const { Card, Badge, Avatar, Checkbox, Button: FWButton } = window.OnsplanDesignSystem_c7911f;
 
 function Stat({ icon, well, iconColor, num, label }) {
   return (

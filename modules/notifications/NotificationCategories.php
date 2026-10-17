@@ -24,7 +24,7 @@ class NotificationCategories
 
     public static function label(string $id): string
     {
-        return self::$categories[$id]['label'] ?? 'FamilyWell';
+        return self::$categories[$id]['label'] ?? 'onsplan';
     }
 
     /** @return array<int, string> */

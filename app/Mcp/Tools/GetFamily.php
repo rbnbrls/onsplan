@@ -19,7 +19,7 @@ class GetFamily extends Tool
 
     protected string $name = 'get_family';
 
-    protected string $description = 'The family this connection acts on: its name, members (with role), the Familywell modules it has turned on, what this connection may do in each module (read or write), and `not_connected`: modules the family uses that this connection was not granted (the person must reconnect Familywell in their AI app to add them). Call this first.';
+    protected string $description = 'The family this connection acts on: its name, members (with role), the onsplan modules it has turned on, what this connection may do in each module (read or write), and `not_connected`: modules the family uses that this connection was not granted (the person must reconnect onsplan in their AI app to add them). Call this first.';
 
     public function handle(Request $request): Response|ResponseFactory
     {
@@ -43,6 +43,6 @@ class GetFamily extends Tool
             'not_connected' => $missing,
             'url' => $this->url('/dashboard'),
         ] + ($missing ? ['hint' => 'This connection cannot see '.implode(', ', array_column($missing, 'name'))
-            .'. Tell the person to reconnect Familywell in their AI app and grant access to add them (Settings > Connected apps in Familywell lists their connections).'] : []));
+            .'. Tell the person to reconnect onsplan in their AI app and grant access to add them (Settings > Connected apps in onsplan lists their connections).'] : []));
     }
 }

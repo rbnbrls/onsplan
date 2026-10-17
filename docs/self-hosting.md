@@ -1,12 +1,12 @@
 # Self-hosting
 
-FamilyWell ships as a single image (FrankenPHP running Laravel Octane, with the frontend built in). The same image runs locally, self-hosted, and in the cloud. The repo includes a `docker-compose.yml` that brings up everything you need: the app, a Reverb WebSocket server, PostgreSQL, and Redis.
+onsplan ships as a single image (FrankenPHP running Laravel Octane, with the frontend built in). The same image runs locally, self-hosted, and in the cloud. The repo includes a `docker-compose.yml` that brings up everything you need: the app, a Reverb WebSocket server, PostgreSQL, and Redis.
 
 ## With Docker Compose (recommended)
 
 ```bash
-git clone https://github.com/bvdr/familywell.git
-cd familywell
+git clone https://github.com/bvdr/onsplan.git
+cd onsplan
 
 cp .env.example .env
 php artisan key:generate     # or generate an APP_KEY yourself and paste it into .env
@@ -37,10 +37,10 @@ The compose file ships with development-grade defaults. For a real deployment:
 A prebuilt image is published to the GitHub Container Registry:
 
 ```bash
-docker pull ghcr.io/bvdr/familywell:latest
+docker pull ghcr.io/bvdr/onsplan:latest
 ```
 
-You can swap `build: .` for `image: ghcr.io/bvdr/familywell:latest` in `docker-compose.yml` to skip building locally, or run the image directly against your own Postgres/Redis by passing the [environment variables](configuration.md) it needs.
+You can swap `build: .` for `image: ghcr.io/bvdr/onsplan:latest` in `docker-compose.yml` to skip building locally, or run the image directly against your own Postgres/Redis by passing the [environment variables](configuration.md) it needs.
 
 ## Upgrading
 

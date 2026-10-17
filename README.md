@@ -1,8 +1,8 @@
-# FamilyWell
+# onsplan
 
 **The family organizer for the people you live with.** Shared shopping lists, to-dos, a family calendar, spending, projects, recipes, the car and more, in one installable app. A small, stable core with self-contained **modules** you switch on per family, so each household only sees what it uses.
 
-Self-host it for your own family, or use the hosted version at **[familywell.co](https://familywell.co)** (there's a one-click live demo).
+Self-host it for your own family, or use the hosted version at **[onsplan.nl](https://onsplan.nl)** (there's a one-click live demo).
 
 [![License: PolyForm Noncommercial 1.0.0](https://img.shields.io/badge/license-PolyForm%20Noncommercial-blue.svg)](LICENSE)
 
@@ -22,7 +22,7 @@ Self-host it for your own family, or use the hosted version at **[familywell.co]
   <img src="docs/screenshots/desktop-calendar-month.png" width="820" alt="Family calendar, month view, with a trip, recurring swim practice and to-do due dates">
 </p>
 
-> **Source-available, not open source.** FamilyWell is free for **personal, noncommercial use**: run it for your own family, change it, learn from it. Commercial use and reselling are not allowed. See [License](#license).
+> **Source-available, not open source.** onsplan is free for **personal, noncommercial use**: run it for your own family, change it, learn from it. Commercial use and reselling are not allowed. See [License](#license).
 
 ---
 
@@ -67,8 +67,8 @@ One Docker image runs the same way self-hosted and in the cloud.
 **Prerequisites:** PHP 8.2+, [Composer](https://getcomposer.org), Node 22+, and npm. No database server needed, local defaults to SQLite.
 
 ```bash
-git clone https://github.com/bvdr/familywell.git
-cd familywell
+git clone https://github.com/bvdr/onsplan.git
+cd onsplan
 
 composer install
 npm install
@@ -101,7 +101,7 @@ docker compose exec app php artisan migrate --force
 docker compose exec app php artisan modules:migrate
 ```
 
-A prebuilt image is published at `ghcr.io/bvdr/familywell`. See **[docs/self-hosting.md](docs/self-hosting.md)** for the full guide, including storage and Reverb configuration.
+A prebuilt image is published at `ghcr.io/bvdr/onsplan`. See **[docs/self-hosting.md](docs/self-hosting.md)** for the full guide, including storage and Reverb configuration.
 
 ### Public demo account (optional)
 
@@ -147,7 +147,7 @@ No secrets are ever committed; `.env` and every credential file are git-ignored.
 
 ## Modules
 
-FamilyWell's features live in `modules/`. Each module is a self-contained folder with its own routes, controllers, models, migrations, and (optionally) a frontend bundle, registered through a service provider and a `module.json` manifest. Every feature listed above is a module; `modules/important_todos` is a small example to start from.
+onsplan's features live in `modules/`. Each module is a self-contained folder with its own routes, controllers, models, migrations, and (optionally) a frontend bundle, registered through a service provider and a `module.json` manifest. Every feature listed above is a module; `modules/important_todos` is a small example to start from.
 
 To learn how the module system works and how to build your own, see **[docs/modules.md](docs/modules.md)**.
 
@@ -168,9 +168,9 @@ Contributions are welcome: bug fixes, new modules, translations, docs. Start wit
 
 ## License
 
-FamilyWell is licensed under the **[PolyForm Noncommercial License 1.0.0](LICENSE)**. It's source-available, not open source:
+onsplan is licensed under the **[PolyForm Noncommercial License 1.0.0](LICENSE)**. It's source-available, not open source:
 
 - **Allowed:** personal and family use, self-hosting for your own household, studying, modifying and sharing the code for noncommercial purposes. Noncommercial organisations (a charity, a school, a public research group) may use it too, as the license defines.
-- **Not allowed:** any commercial use, including selling or reselling FamilyWell or a modified version, offering it as a paid or hosted service, or using it inside a business.
+- **Not allowed:** any commercial use, including selling or reselling onsplan or a modified version, offering it as a paid or hosted service, or using it inside a business.
 
-Any copy or modified version must keep the license and its `Required Notice` line. For commercial licensing, contact the maintainer through [familywell.co](https://familywell.co).
+Any copy or modified version must keep the license and its `Required Notice` line. For commercial licensing, contact the maintainer through [onsplan.nl](https://onsplan.nl).

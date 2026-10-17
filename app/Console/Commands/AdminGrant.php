@@ -5,12 +5,12 @@ namespace App\Console\Commands;
 use App\Models\User;
 use Illuminate\Console\Command;
 
-// Who may sign in to admin.familywell.org. Run from the production console; the only way to set the flag.
+// Who may sign in to admin.onsplan.nl. Run from the production console; the only way to set the flag.
 class AdminGrant extends Command
 {
     protected $signature = 'admin:grant {email}';
 
-    protected $description = 'Make a FamilyWell user a platform admin (admin.familywell.org)';
+    protected $description = 'Make a onsplan user a platform admin (admin.onsplan.nl)';
 
     public function handle(): int
     {

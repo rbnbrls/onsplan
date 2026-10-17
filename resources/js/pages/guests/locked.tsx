@@ -15,11 +15,11 @@ export default function GuestLocked({ token }: { token: string }) {
 
     return (
         <div className="bg-background flex min-h-screen items-center justify-center p-4">
-            <Head title="Enter password · FamilyWell" />
+            <Head title="Enter password · onsplan" />
             <form onSubmit={submit} className="bg-surface-card w-full max-w-sm rounded-2xl border p-6 text-center">
                 <div className="flex items-center justify-center gap-2 pb-2">
                     <span className="bg-tile text-tile-foreground flex size-7 items-center justify-center rounded-lg text-xs font-bold">FW</span>
-                    <span className="text-muted-foreground text-sm">FamilyWell</span>
+                    <span className="text-muted-foreground text-sm">onsplan</span>
                 </div>
                 <span className="bg-accent-subtle text-primary mx-auto mt-2 flex size-14 items-center justify-center rounded-full">
                     <Lock className="size-6" />

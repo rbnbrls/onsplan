@@ -16,6 +16,7 @@ use App\Support\Sharing\ShareableRegistry;
 use App\Support\Tenancy\CurrentFamily;
 use App\Support\Trash\Trash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Modules\Notifications\NotificationCategories;
@@ -29,11 +30,17 @@ class SpendingServiceProvider extends ServiceProvider
         // Adding a Spend counts as using this module (paywall timing + the admin's progress bar).
         Engagement::track('spending', Spend::class);
 
-        // A new family's default currency is where its creator signs up from: Cloudflare's country on the
-        // onboarding request -> that country's currency (RO -> RON). Unknown country (local, Tor, no
-        // Cloudflare) leaves it unset, which falls back to Currencies::FALLBACK. Changeable in Settings.
+        // New families use the currency inferred from their signup country when supported. The admin
+        // can still change this in Spending settings.
         app(Hooks::class)->listen('family.created', function (Family $family, Request $request) {
-            if ($currency = Currencies::forCountry(TrackLastSeen::country($request))) {
+            // The hook is registered for every request even when the optional spending module has not
+            // been installed yet. Onboarding must remain usable in that configuration.
+            if (! Schema::hasTable('spending_settings')) {
+                return;
+            }
+
+            $currency = Currencies::forCountry(TrackLastSeen::country($request));
+            if ($currency) {
                 SpendSetting::current($family->id)->update(['default_currency' => $currency]);
             }
         });

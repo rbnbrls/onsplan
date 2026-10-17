@@ -55,16 +55,16 @@ class DemoSeeder extends Seeder
     public const FAMILY_NAME = 'The Millers';
 
     /** The account /demo signs visitors in as (the family owner). */
-    public const OWNER_EMAIL = 'demo@familywell.co';
+    public const OWNER_EMAIL = 'demo@onsplan.nl';
 
     /** @var list<array{name:string,email:string,role:string,birthday:string}> */
     public const MEMBERS = [
         ['name' => 'Sarah Miller', 'email' => self::OWNER_EMAIL, 'role' => 'admin', 'birthday' => '1984-03-14'],
-        ['name' => 'David Miller', 'email' => 'demo-david@familywell.co', 'role' => 'admin', 'birthday' => '1982-07-22'],
-        ['name' => 'Emma Miller', 'email' => 'demo-emma@familywell.co', 'role' => 'member', 'birthday' => '2012-05-09'],
-        ['name' => 'Noah Miller', 'email' => 'demo-noah@familywell.co', 'role' => 'member', 'birthday' => '2016-10-30'],
+        ['name' => 'David Miller', 'email' => 'demo-david@onsplan.nl', 'role' => 'admin', 'birthday' => '1982-07-22'],
+        ['name' => 'Emma Miller', 'email' => 'demo-emma@onsplan.nl', 'role' => 'member', 'birthday' => '2012-05-09'],
+        ['name' => 'Noah Miller', 'email' => 'demo-noah@onsplan.nl', 'role' => 'member', 'birthday' => '2016-10-30'],
         // A leap-day kid: guarantees Feb 29 is a birthday even before the generated contacts.
-        ['name' => 'Lily Miller', 'email' => 'demo-lily@familywell.co', 'role' => 'member', 'birthday' => '2020-02-29'],
+        ['name' => 'Lily Miller', 'email' => 'demo-lily@onsplan.nl', 'role' => 'member', 'birthday' => '2020-02-29'],
     ];
 
     public const MODULES = [
@@ -111,11 +111,11 @@ class DemoSeeder extends Seeder
     {
         // Members are matched by email so their ids survive a reset (sessions, shares, /demo all keep
         // working). Passwords are random (the only way in is the /demo route), except the owner's when
-        // familywell.demo_password is set: that's the app-directory reviewers' login.
+        // onsplan.demo_password is set: that's the app-directory reviewers' login.
         foreach (self::MEMBERS as $m) {
             $this->u[Str::before($m['name'], ' ')] = User::updateOrCreate(['email' => $m['email']], [
                 'name' => $m['name'],
-                'password' => ($m['email'] === self::OWNER_EMAIL ? config('familywell.demo_password') : null) ?: Str::random(40),
+                'password' => ($m['email'] === self::OWNER_EMAIL ? config('onsplan.demo_password') : null) ?: Str::random(40),
                 'email_verified_at' => $this->today,
                 'locale' => 'en',
                 'theme' => null,
@@ -246,7 +246,7 @@ class DemoSeeder extends Seeder
 
     private function spending(): void
     {
-        SpendSetting::current()->forceFill(['default_currency' => 'USD'])->save();
+        SpendSetting::current()->forceFill(['default_currency' => 'EUR'])->save();
         SpendCategory::ensureDefaults();
         $sarah = $this->u['Sarah'];
 

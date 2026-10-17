@@ -47,7 +47,7 @@ class ApproveController
         $authRequest = $this->getAuthRequestFromSession($request);
         // Defence in depth: AuthorizeController never renders consent for a board client, but if a stale
         // or forged request for one reaches this POST it must not be given MCP scopes.
-        abort_if(OAuthClient::isBoardClient($authRequest->getClient()->getIdentifier()), 403, 'This sign-in can only ask for FamilyWell board access.');
+        abort_if(OAuthClient::isBoardClient($authRequest->getClient()->getIdentifier()), 403, 'This sign-in can only ask for onsplan board access.');
         $authRequest->setScopes(array_map(fn (string $s) => new Scope($s), McpTools::scopesFor($familyId, $access)));
         $authRequest->setAuthorizationApproved(true);
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell Button.
+ * onsplan Button.
  * Source: component/PrimaryButton (accent fill, radius-md, 15/20 padding,
  * Inter 15/600). Secondary + ghost variants derive from the "Invite" and
  * nav-link treatments seen across the web screens.

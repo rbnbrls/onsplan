@@ -9,7 +9,7 @@ class AdminRevoke extends Command
 {
     protected $signature = 'admin:revoke {email}';
 
-    protected $description = 'Remove platform admin from a FamilyWell user';
+    protected $description = 'Remove platform admin from a onsplan user';
 
     public function handle(): int
     {

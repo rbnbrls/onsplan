@@ -16,7 +16,7 @@ interface AuthLayoutProps {
 // Brand-panel content per auth screen (design: "Web · Auth Flow"). Keyed by route name so the pages
 // stay focused on their forms; anything not listed (reset-password, verify-email, confirm-password)
 // falls back to the calm login panel, keeping the whole auth surface consistent.
-// The images are photos of cosy home interiors generated for FamilyWell (public/images/auth/*.webp,
+// The images are photos of cosy home interiors generated for onsplan (public/images/auth/*.webp,
 // 1024x1536, ~150 KB): evening living room (login), morning kitchen (register), rainy reading nook (reset).
 type PanelContent = { headline: string; sub: string; image: string };
 
@@ -40,8 +40,8 @@ const PANELS: Record<string, PanelContent> = {
 
 export default function AuthSplitLayout({ children, title, description, headline, sub, image }: AuthLayoutProps) {
     const { name } = usePage().props as { name?: string };
-    // The outlined wordmark is the FamilyWell brand; a self-hosted instance with its own APP_NAME keeps its name as text.
-    const isBrandName = !name || name.toLowerCase() === 'familywell';
+    // The outlined wordmark is the onsplan brand; a self-hosted instance with its own APP_NAME keeps its name as text.
+    const isBrandName = !name || name.toLowerCase() === 'onsplan';
     // ziggy's current() gives the active route name; fall back to the login panel for undesigned screens.
     const routeName = typeof route().current === 'function' ? route().current() : undefined;
     const base = (routeName && PANELS[routeName]) || PANELS.login;
@@ -68,9 +68,9 @@ export default function AuthSplitLayout({ children, title, description, headline
                 <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
 
                 <div className="relative flex h-full flex-col justify-between p-10">
-                    {/* White-only logo (FamilyWell-Logo-White): no yellow tile over the photo. */}
-                    {/* The logo leads to the public site (familywell.org): the app root only bounces guests back here. */}
-                    <a href="https://familywell.org" className="flex items-center gap-2.5 text-white">
+                    {/* White-only logo (onsplan-Logo-White): no yellow tile over the photo. */}
+                    {/* The logo leads to the public site (onsplan.nl): the app root only bounces guests back here. */}
+                    <a href="https://onsplan.nl" className="flex items-center gap-2.5 text-white">
                         <AppLogoIcon className="size-7 fill-current" />
                         {isBrandName ? <AppWordmark className="h-6 w-auto fill-current" /> : <span className="font-heading text-2xl">{name}</span>}
                     </a>
@@ -86,7 +86,7 @@ export default function AuthSplitLayout({ children, title, description, headline
             <div className="bg-background flex flex-col items-center justify-center p-6 sm:p-12">
                 <div className="flex w-full max-w-[420px] flex-col gap-6">
                     {/* Wordmark shows on mobile where the brand panel is hidden. */}
-                    <a href="https://familywell.org" className="text-primary flex items-center gap-2.5 lg:hidden">
+                    <a href="https://onsplan.nl" className="text-primary flex items-center gap-2.5 lg:hidden">
                         <span className="flex size-8 items-center justify-center rounded-md bg-[#FFDF00]">
                             <AppLogoIcon className="size-5 fill-[#101100]" />
                         </span>

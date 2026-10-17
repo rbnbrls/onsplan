@@ -32,7 +32,7 @@ it('tags each push uniquely (by notification id) so they never collapse into one
 
 it('carries no category label for an uncategorised push', function () {
     $user = User::factory()->create();
-    $msg = (new PushAlert('FamilyWell', 'hi'))->toWebPush($user, new PushAlert('x', 'y'));
+    $msg = (new PushAlert('onsplan', 'hi'))->toWebPush($user, new PushAlert('x', 'y'));
 
     expect($msg->toArray()['data']['categoryLabel'] ?? null)->toBeNull();
 });

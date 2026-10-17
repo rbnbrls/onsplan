@@ -1,6 +1,6 @@
 # Modules
 
-FamilyWell keeps its **core** small (families, members, auth, sharing, realtime, the module system itself) and puts every feature in a **module**, a self-contained folder under `modules/`. A module has its own routes, controllers, models, migrations, and optionally a frontend bundle. Families turn modules on and off from **Settings → Modules**, and routes are gated so a module is only reachable when the family has enabled it.
+onsplan keeps its **core** small (families, members, auth, sharing, realtime, the module system itself) and puts every feature in a **module**, a self-contained folder under `modules/`. A module has its own routes, controllers, models, migrations, and optionally a frontend bundle. Families turn modules on and off from **Settings → Modules**, and routes are gated so a module is only reachable when the family has enabled it.
 
 Every feature is a bundled module (`tasks`, `shopping`, `spending`, `vehicles`, `recipes`, ...). `important_todos` is the smallest one and the best place to start reading: it extends tasks purely through hooks and a frontend slot.
 

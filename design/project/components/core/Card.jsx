@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell Card — the white surface panel used everywhere (task rows,
+ * onsplan Card — the white surface panel used everywhere (task rows,
  * stat cards, list panels). Soft border, radius-md/lg, optional shadow.
  */
 export function Card({

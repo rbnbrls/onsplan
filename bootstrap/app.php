@@ -24,7 +24,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         // MCP server + OAuth routes live outside the `web` group (bearer auth, no session). See routes/mcp.php.
         // routes/board.php: the module-requests board's bearer endpoints, same reasoning.
-        // routes/admin.php: admin.familywell.org's bearer endpoints, same reasoning.
+        // routes/admin.php: admin.onsplan.nl's bearer endpoints, same reasoning.
         then: function () {
             require base_path('routes/mcp.php');
             require base_path('routes/board.php');
@@ -48,16 +48,16 @@ return Application::configure(basePath: dirname(__DIR__))
             ShareTheme::class,
             ShareModules::class,
             ShareRealtime::class,
-            // Last active (web) for admin.familywell.org; throttled to one write per user per 5 minutes.
+            // Last active (web) for admin.onsplan.nl; throttled to one write per user per 5 minutes.
             TrackLastSeen::class,
-            // Guests only: the familywell.org visitor id + first-touch source, kept until sign-up adopts them.
+            // Guests only: the onsplan.nl visitor id + first-touch source, kept until sign-up adopts them.
             CaptureFirstTouch::class,
         ]);
 
         // Stripe can't send a CSRF token; the webhook authenticates by its Stripe-Signature instead.
         // Sign in with Apple POSTs back from appleid.apple.com (no token possible); it's protected by the
         // OAuth state in its own encrypted cookie instead (see App\Support\Auth\SocialLogin).
-        $middleware->validateCsrfTokens(except: ['stripe/webhook', 'auth/apple/callback']);
+        $middleware->validateCsrfTokens(except: ['stripe/webhook', 'auth/apple/callback', 'integrations/microsoft/calendar/webhook']);
 
         $middleware->alias([
             'module' => EnsureModuleEnabled::class,

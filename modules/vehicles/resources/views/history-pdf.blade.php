@@ -70,12 +70,12 @@
 </style>
 </head>
 <body>
-<div class="footer">FamilyWell · {{ $title }}{{ $v['plate'] ? ' · '.$v['plate'] : '' }} · {{ $f->t('export_generated', ['date' => $f->today()]) }}</div>
+<div class="footer">onsplan · {{ $title }}{{ $v['plate'] ? ' · '.$v['plate'] : '' }} · {{ $f->t('export_generated', ['date' => $f->today()]) }}</div>
 
 <table class="head">
     <tr>
         <td>
-            <div class="brand">FamilyWell · {{ $f->t('export_title') }}</div>
+            <div class="brand">onsplan · {{ $f->t('export_title') }}</div>
             <h1 class="serif">{{ $title }}</h1>
             @php
                 $facts = array_filter([

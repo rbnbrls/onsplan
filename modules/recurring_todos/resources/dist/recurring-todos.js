@@ -2,7 +2,7 @@
 // edit screen's slots: an interval picker in the editor (task.editor.fields) and a repeat badge on
 // the row (task.row.badges). `ctx` is spread as props by <Slot>; onPatch persists via the tasks
 // endpoint (the backend `task.saved` hook stores it).
-const { React, registerSlot } = window.Familywell;
+const { React, registerSlot } = window.onsplan;
 const h = React.createElement;
 
 const OPTIONS = [

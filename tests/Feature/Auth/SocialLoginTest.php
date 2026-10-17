@@ -25,7 +25,7 @@ function socialApple(): string
     $key = openssl_pkey_new(['private_key_type' => OPENSSL_KEYTYPE_EC, 'curve_name' => 'prime256v1']);
     openssl_pkey_export($key, $pem);
     config([
-        'services.apple.client_id' => 'co.familywell.web',
+        'services.apple.client_id' => 'co.onsplan.web',
         'services.apple.team_id' => 'TEAM123456',
         'services.apple.key_id' => 'KEY1234567',
         // One line with literal \n escapes, exactly how .do/apply.sh stores it.
@@ -98,7 +98,7 @@ it('hides the buttons and routes when no provider is configured', function () {
 
 it('shows only the providers that are fully configured', function () {
     socialGoogle();
-    config(['services.apple.client_id' => 'co.familywell.web', 'services.apple.private_key' => null]);
+    config(['services.apple.client_id' => 'co.onsplan.web', 'services.apple.private_key' => null]);
     get('/login')->assertInertia(fn ($page) => $page->where('socialProviders', ['google']));
 
     socialApple();
@@ -183,7 +183,7 @@ function socialGoogleSignIn(string $email, string $sub = 'g-1')
 }
 
 it('never links by email alone: an existing account must confirm with its password first', function () {
-    // The attack: someone registered the victim's address (FamilyWell doesn't force verification).
+    // The attack: someone registered the victim's address (onsplan doesn't force verification).
     socialGoogle();
     $attacker = User::factory()->unverified()->create(['email' => 'Victim@Example.com']);
 
@@ -322,7 +322,7 @@ it('redirects to Apple with form_post, state, nonce and a SameSite=None state co
     [$query, $cookie] = socialAppleStart();
     $saved = json_decode($cookie, true);
 
-    expect($query['client_id'])->toBe('co.familywell.web')
+    expect($query['client_id'])->toBe('co.onsplan.web')
         ->and($query['redirect_uri'])->toBe(url('/auth/apple/callback'))
         ->and($query['response_type'])->toBe('code')
         ->and($query['response_mode'])->toBe('form_post')
@@ -338,7 +338,7 @@ it('accepts Apple\'s cross-site form_post without CSRF, using the state cookie',
 
     Http::preventStrayRequests();
     Http::fake(['appleid.apple.com/auth/token' => Http::response(['id_token' => socialIdToken([
-        'iss' => 'https://appleid.apple.com', 'aud' => 'co.familywell.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
+        'iss' => 'https://appleid.apple.com', 'aud' => 'co.onsplan.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
         'email' => 'abc@privaterelay.appleid.com', 'email_verified' => 'true', 'is_private_email' => 'true',
     ])])]);
 
@@ -363,14 +363,14 @@ it('accepts Apple\'s cross-site form_post without CSRF, using the state cookie',
         ->and(session('url.intended'))->toBe(url('/oauth/authorize?client_id=board'));
 
     // The token request authenticated with a freshly signed client-secret JWT.
-    Http::assertSent(fn (HttpRequest $r) => $r['code'] === 'apple-code' && $r['client_id'] === 'co.familywell.web'
+    Http::assertSent(fn (HttpRequest $r) => $r['code'] === 'apple-code' && $r['client_id'] === 'co.onsplan.web'
         && count(explode('.', $r['client_secret'])) === 3 && $r['redirect_uri'] === url('/auth/apple/callback'));
 });
 
 it('rejects an Apple callback without the state cookie or with a wrong nonce', function () {
     socialApple();
     Http::fake(['appleid.apple.com/auth/token' => Http::response(['id_token' => socialIdToken([
-        'iss' => 'https://appleid.apple.com', 'aud' => 'co.familywell.web', 'sub' => 'apple-1', 'nonce' => 'replayed',
+        'iss' => 'https://appleid.apple.com', 'aud' => 'co.onsplan.web', 'sub' => 'apple-1', 'nonce' => 'replayed',
         'email' => 'a@example.com', 'email_verified' => true,
     ])])]);
     [$query] = socialAppleStart();
@@ -392,7 +392,7 @@ it('sends an Apple sign-in without an email back to login', function () {
     socialApple();
     [$query, $cookie] = socialAppleStart();
     Http::fake(['appleid.apple.com/auth/token' => Http::response(['id_token' => socialIdToken([
-        'iss' => 'https://appleid.apple.com', 'aud' => 'co.familywell.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
+        'iss' => 'https://appleid.apple.com', 'aud' => 'co.onsplan.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
     ])])]);
 
     $this->withCookie(SocialLogin::APPLE_COOKIE, $cookie)->post('/auth/apple/callback', ['code' => 'c', 'state' => $query['state']])
@@ -421,7 +421,7 @@ it('signs Apple\'s client secret as an ES256 JWT with the right header and claim
     expect(json_decode(socialB64Decode($header), true))->toBe(['alg' => 'ES256', 'kid' => 'KEY1234567']);
     $claims = json_decode(socialB64Decode($claims), true);
     expect($claims['iss'])->toBe('TEAM123456')
-        ->and($claims['sub'])->toBe('co.familywell.web')
+        ->and($claims['sub'])->toBe('co.onsplan.web')
         ->and($claims['aud'])->toBe('https://appleid.apple.com')
         ->and($claims['iat'])->toBeGreaterThanOrEqual($before)
         ->and($claims['exp'] - $claims['iat'])->toBe(300)
@@ -460,17 +460,17 @@ it('disconnects one of two linked accounts, and only the user\'s own', function 
 
 // ---------------------------------------------------------------- analytics adoption (see AnalyticsTest)
 
-it('adopts the familywell.org visitor id and first touch on a Google sign-up', function () {
+it('adopts the onsplan.nl visitor id and first touch on a Google sign-up', function () {
     socialGoogle();
     $events = umamiOn();
     $vid = (string) Str::uuid();
-    get("/login?fw_vid={$vid}&fw_src=familywell.org&fw_med=referral")->assertOk();
+    get("/login?fw_vid={$vid}&fw_src=onsplan.nl&fw_med=referral")->assertOk();
 
     socialGoogleSignIn('new.person@gmail.com')->assertRedirect(route('onboarding.index'));
 
     $user = User::where('email', 'new.person@gmail.com')->sole();
     expect($user->analytics_id)->toBe($vid)
-        ->and($user->first_touch)->toMatchArray(['source' => 'familywell.org', 'medium' => 'referral'])
+        ->and($user->first_touch)->toMatchArray(['source' => 'onsplan.nl', 'medium' => 'referral'])
         ->and($events())->toBe([['signed_up', ['method' => 'google'], $vid, '/register']]);
 });
 
@@ -478,11 +478,11 @@ it('carries the visitor id through Apple\'s cross-site callback into the new ses
     socialApple();
     $events = umamiOn();
     $vid = (string) Str::uuid();
-    get("/login?fw_vid={$vid}&fw_src=familywell.org")->assertOk();
+    get("/login?fw_vid={$vid}&fw_src=onsplan.nl")->assertOk();
     [$query, $cookie] = socialAppleStart();
 
     Http::fake(['appleid.apple.com/auth/token' => Http::response(['id_token' => socialIdToken([
-        'iss' => 'https://appleid.apple.com', 'aud' => 'co.familywell.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
+        'iss' => 'https://appleid.apple.com', 'aud' => 'co.onsplan.web', 'sub' => 'apple-1', 'nonce' => $query['nonce'],
         'email' => 'abc@privaterelay.appleid.com', 'email_verified' => 'true',
     ])])]);
     session()->flush(); // Apple's POST is cross-site: the old session doesn't come along
@@ -492,6 +492,6 @@ it('carries the visitor id through Apple\'s cross-site callback into the new ses
 
     $user = User::where('email', 'abc@privaterelay.appleid.com')->sole();
     expect($user->analytics_id)->toBe($vid)
-        ->and($user->first_touch['source'])->toBe('familywell.org')
+        ->and($user->first_touch['source'])->toBe('onsplan.nl')
         ->and($events())->toBe([['signed_up', ['method' => 'apple'], $vid, '/register']]);
 });

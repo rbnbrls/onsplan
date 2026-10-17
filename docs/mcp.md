@@ -1,17 +1,17 @@
 # MCP server (AI assistants)
 
-Familywell exposes an [MCP](https://modelcontextprotocol.io) server so AI assistants (Claude, ChatGPT,
+onsplan exposes an [MCP](https://modelcontextprotocol.io) server so AI assistants (Claude, ChatGPT,
 Cursor, VS Code and any other MCP client) can read and change a family's data on a person's behalf.
 
-- **Address:** `https://mcp.familywell.co/mcp` (self-hosted: `https://<your host>/mcp`, or set `MCP_SERVER_URL`).
+- **Address:** `https://mcp.onsplan.nl/mcp` (self-hosted: `https://<your host>/mcp`, or set `MCP_SERVER_URL`).
 - **Auth:** OAuth 2.1 authorization code + PKCE. No API keys or personal tokens.
 - **Scope of a connection:** one family, and per module *No access*, *Read* or *Read & write*.
 
 ## Connecting an assistant
 
 1. Add a remote MCP server in the assistant with the address above.
-   Claude Code: `claude mcp add --transport http familywell https://mcp.familywell.co/mcp`.
-2. The assistant opens a browser window. Sign in to Familywell if needed.
+   Claude Code: `claude mcp add --transport http onsplan https://mcp.onsplan.nl/mcp`.
+2. The assistant opens a browser window. Sign in to onsplan if needed.
 3. The consent screen asks for **one family** and what the app may do in each module. Everything starts
    at *No access*. The app always sees the family's name and members (`get_family`).
 4. **Allow** sends you back to the assistant, now connected.
@@ -98,7 +98,7 @@ as one unified `items` list. A module's items appear only when the token can als
 (e.g. without Tasks access, `calendar_list` carries calendar events and birthdays but not task due
 dates). An optional `sources` (e.g. `["calendar","birthdays"]`) narrows the list further; it can never add
 a module the token cannot read, and unknown ids are ignored. Birthday titles and "day N of M" come out in
-the person's Familywell language. Dated event to-dos are calendar items too (kind `task`, source `calendar`). `calendar_get_event`
+the person's onsplan language. Dated event to-dos are calendar items too (kind `task`, source `calendar`). `calendar_get_event`
 returns one event with its people and to-dos (sub-tasks included). `calendar_create_event`,
 `calendar_update_event` and `calendar_delete_event` take a `repeat`; editing or deleting a repeating
 event applies to the whole series, not a single occurrence. `calendar_add_todo` adds a to-do linked to
@@ -134,8 +134,8 @@ origin (signed photo URLs). Widgets change data only by calling the normal write
 a view-only widget (a change says it needs *Read & write*). After a change the widget tells the model
 what the person did (`ui/update-model-context`), so the next turn knows.
 
-**How:** `App\Mcp\Apps\Widget` is one `AppResource` per widget (`ui://familywell/<widget>`, permanent: hosts cache the tool list from connect time, so never rename one, registered in
-`FamilywellServer::boot`). Its page is `resources/views/mcp-app.blade.php`: laravel/mcp's SDK shell plus
+**How:** `App\Mcp\Apps\Widget` is one `AppResource` per widget (`ui://onsplan/<widget>`, permanent: hosts cache the tool list from connect time, so never rename one, registered in
+`OnsplanServer::boot`). Its page is `resources/views/mcp-app.blade.php`: laravel/mcp's SDK shell plus
 `resources/mcp-apps/core.{css,js}` (shared runtime: `FW.start`, `FW.act`, `FW.h`, ...) and
 `resources/mcp-apps/<widget>.js`, all inlined, so the CSP needs no external domains. A tool opts in with
 `protected ?string $app = '<widget>';`. New widget: a line in `Widget::WIDGETS` plus its JS file.
@@ -148,7 +148,7 @@ offers that mode (`ui/request-display-mode`). laravel/mcp's SDK hardcodes `appCa
 ## How it works
 
 ```
-assistant ──POST /mcp (Bearer)──▶ auth:api (Passport) ▶ McpFamilyContext ▶ FamilywellServer ▶ tools
+assistant ──POST /mcp (Bearer)──▶ auth:api (Passport) ▶ McpFamilyContext ▶ OnsplanServer ▶ tools
 discovery   /.well-known/oauth-protected-resource[/mcp]   /.well-known/oauth-authorization-server
 OAuth       POST /oauth/register (RFC 7591)   GET|POST|DELETE /oauth/authorize (consent)   POST /oauth/token
 ```
@@ -205,7 +205,7 @@ OAuth       POST /oauth/register (RFC 7591)   GET|POST|DELETE /oauth/authorize (
 
 3. **Trash:** give deletable models `SoftDeletes` (plus `CascadesTrash` with `$trashChildren` /
    `$trashParents` for parent/child rows) and register them with `Trash::register(Model::class)` so
-   `trash:purge` cleans them up after `config('familywell.trash_days')`. Implement `App\Support\Trash\TrashSource`
+   `trash:purge` cleans them up after `config('onsplan.trash_days')`. Implement `App\Support\Trash\TrashSource`
    (list + restore, applying your sharing rules) and register it with `Trash::source('things', ThingsTrash::class)`:
    it feeds Settings → Recently deleted, and your MCP trash tools should call it too.
 
@@ -214,9 +214,9 @@ OAuth       POST /oauth/register (RFC 7591)   GET|POST|DELETE /oauth/authorize (
 - **Keys:** Passport signs tokens with an RSA pair from `PASSPORT_PRIVATE_KEY` / `PASSPORT_PUBLIC_KEY`
   (newlines as literal `\n`). `.do/apply.sh` generates them into `.env.do` and injects them as secrets.
   Rotating them disconnects every app. Locally, `php artisan passport:keys` writes `storage/oauth-*.key`.
-- **Env:** `MCP_AUTHORIZATION_SERVER` (the host that runs OAuth, `https://familywell.co` in production)
+- **Env:** `MCP_AUTHORIZATION_SERVER` (the host that runs OAuth, `https://onsplan.nl` in production)
   and `MCP_SERVER_URL` (the address shown in Settings).
-- **DNS:** `mcp.familywell.co` is an ALIAS domain on the app (`.do/app.yaml`) with a Cloudflare CNAME
+- **DNS:** `mcp.onsplan.nl` is an ALIAS domain on the app (`.do/app.yaml`) with a Cloudflare CNAME
   to the app ingress. No host-based routing: every route answers on both hosts.
 - **Tests:** `tests/Feature/Mcp/` drives the real OAuth flow (`mcpConnect()` in `tests/Pest.php`) with
   keys generated at runtime.

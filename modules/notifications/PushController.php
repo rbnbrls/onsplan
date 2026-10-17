@@ -34,7 +34,7 @@ class PushController extends Controller
 
     public function test(Request $request): Response
     {
-        $request->user()->notify(new PushAlert('FamilyWell', 'Push notifications are on for this device 🎉'));
+        $request->user()->notify(new PushAlert('onsplan', 'Push notifications are on for this device 🎉'));
 
         return response()->noContent();
     }

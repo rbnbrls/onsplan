@@ -50,7 +50,7 @@ return [
     |
     */
 
-    // Familywell: the MCP endpoint lives on mcp.familywell.co but login, consent and tokens run on the
+    // onsplan: the MCP endpoint lives on mcp.onsplan.nl but login, consent and tokens run on the
     // main host (normal web session, cookies untouched), so the protected-resource document served on
     // the mcp host must point clients at the main host. Null (local/dev/tests) = the request's own host.
     'authorization_server' => env('MCP_AUTHORIZATION_SERVER'),

@@ -99,7 +99,7 @@ export default function Login({ status, canResetPassword, canDemo, email }: Logi
                 </div>
 
                 <div className="text-muted-foreground text-center text-sm">
-                    {t('auth.new_to_familywell')}{' '}
+                    {t('auth.new_to_onsplan')}{' '}
                     <TextLink href={route('register')} tabIndex={5}>
                         {t('auth.create_an_account')}
                     </TextLink>

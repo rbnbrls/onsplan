@@ -136,7 +136,7 @@ class Recipe extends Model implements ProvidesGuestView
     }
 
     /**
-     * For places with no Familywell session: the guest page and the MCP widget (rendered by Claude /
+     * For places with no onsplan session: the guest page and the MCP widget (rendered by Claude /
      * ChatGPT in their own sandbox). A signed URL that works until the end of tomorrow; the expiry is
      * rounded to a day so the URL stays the same, and cacheable, for a whole day.
      */

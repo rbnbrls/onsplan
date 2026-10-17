@@ -57,7 +57,7 @@ class RecipesServiceProvider extends ServiceProvider
                 ])->values()->all();
         });
 
-        // The photo behind a signed URL, for viewers with no Familywell session: the guest page and the
+        // The photo behind a signed URL, for viewers with no onsplan session: the guest page and the
         // MCP widget inside Claude/ChatGPT. The signature authorizes it; no family or module gate needed.
         Route::middleware(['web', 'signed', 'throttle:120,1'])
             ->get('/recipes/photo/{recipe}', [RecipesController::class, 'signedPhoto'])

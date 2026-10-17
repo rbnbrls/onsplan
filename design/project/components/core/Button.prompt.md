@@ -1,4 +1,4 @@
-**Button** — the primary tap/click target across FamilyWell. Use `primary` for the main action on a screen, `secondary` for neutral actions next to it, `ghost` for tertiary/inline actions, `danger` for destructive confirmations.
+**Button** — the primary tap/click target across onsplan. Use `primary` for the main action on a screen, `secondary` for neutral actions next to it, `ghost` for tertiary/inline actions, `danger` for destructive confirmations.
 
 ```jsx
 <Button variant="primary" leadingIcon={<PlusIcon />}>Quick add</Button>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-// When someone last used FamilyWell, and how (web app or an assistant over MCP), for admin.familywell.org.
+// When someone last used onsplan, and how (web app or an assistant over MCP), for admin.onsplan.nl.
 // Kept on the user row because web sessions get garbage-collected and MCP calls have no session at all.
 return new class extends Migration
 {

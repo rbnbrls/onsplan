@@ -1,4 +1,4 @@
-**IconButton** — single-icon control. Use for toolbar actions, avatars-as-buttons, and the round icon wells seen throughout FamilyWell. Always pass `ariaLabel`.
+**IconButton** — single-icon control. Use for toolbar actions, avatars-as-buttons, and the round icon wells seen throughout onsplan. Always pass `ariaLabel`.
 
 ```jsx
 <IconButton icon={<BellIcon />} variant="subtle" ariaLabel="Notifications" />

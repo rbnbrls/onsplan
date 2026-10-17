@@ -1,10 +1,10 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "bvdr/familywell",
+    "name": "bvdr/onsplan",
     "type": "project",
     "description": "Open-source family organization app: shared spending, to-dos, and shopping lists, built on a small core with self-contained modules.",
     "keywords": [
-        "familywell",
+        "onsplan",
         "family",
         "laravel",
         "inertia",
@@ -12,7 +12,7 @@
         "self-hosted",
         "modules"
     ],
-    "homepage": "https://familywell.co",
+    "homepage": "https://onsplan.nl",
     "license": "PolyForm-Noncommercial-1.0.0",
     "require": {
         "php": "^8.2",
@@ -26,6 +26,7 @@
         "laravel/reverb": "^1.10",
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.35",
+        "sabre/dav": "^4.7",
         "tightenco/ziggy": "^2.4"
     },
     "require-dev": {

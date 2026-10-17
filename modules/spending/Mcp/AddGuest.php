@@ -21,7 +21,7 @@ class AddGuest extends Tool
 
     protected string $name = 'spending_add_guest';
 
-    protected string $description = 'Add a named guest (someone without a Familywell account, e.g. a friend on a trip) to a spending list, like Share > add guest in the app. Returns the guest\'s participant key (e.g. "g12") to use as `payer` in spending_add_expense, plus the list\'s participants. Adding the same name again returns the existing guest. Only the list\'s owner can add guests.';
+    protected string $description = 'Add a named guest (someone without a onsplan account, e.g. a friend on a trip) to a spending list, like Share > add guest in the app. Returns the guest\'s participant key (e.g. "g12") to use as `payer` in spending_add_expense, plus the list\'s participants. Adding the same name again returns the existing guest. Only the list\'s owner can add guests.';
 
     public function schema(JsonSchema $schema): array
     {

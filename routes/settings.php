@@ -3,6 +3,9 @@
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\Settings\ConnectedAppsController;
 use App\Http\Controllers\Settings\MediaLibraryController;
+use App\Http\Controllers\Settings\MicrosoftCalendarController;
+use App\Http\Controllers\Settings\NextcloudCalendarController;
+use App\Http\Controllers\FamilyWasteController;
 use App\Http\Controllers\Settings\PasswordController;
 use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\RecentlyDeletedController;
@@ -21,6 +24,22 @@ Route::post('stripe/webhook', [BillingController::class, 'webhook'])->name('bill
 
 Route::middleware('auth')->group(function () {
     Route::redirect('settings', 'settings/profile');
+
+    Route::middleware('family')->group(function () {
+        Route::get('settings/household', [FamilyWasteController::class, 'index'])->name('settings.household');
+        Route::patch('settings/household', [FamilyWasteController::class, 'update'])->middleware('not-demo')->name('settings.household.update');
+        Route::post('settings/household/sync', [FamilyWasteController::class, 'sync'])->middleware('not-demo')->name('settings.household.sync');
+        Route::get('settings/calendar', [MicrosoftCalendarController::class, 'index'])->name('settings.calendar');
+        Route::get('settings/calendar/outlook/redirect', [MicrosoftCalendarController::class, 'redirect'])->name('settings.calendar.outlook.redirect');
+        Route::get('settings/calendar/outlook/callback', [MicrosoftCalendarController::class, 'callback'])->name('settings.calendar.outlook.callback');
+        Route::post('settings/calendar/outlook/select', [MicrosoftCalendarController::class, 'select'])->name('settings.calendar.outlook.select');
+        Route::post('settings/calendar/outlook/sync', [MicrosoftCalendarController::class, 'sync'])->name('settings.calendar.outlook.sync');
+        Route::delete('settings/calendar/outlook', [MicrosoftCalendarController::class, 'destroy'])->middleware('not-demo')->name('settings.calendar.outlook.destroy');
+        Route::post('settings/calendar/nextcloud/discover', [NextcloudCalendarController::class, 'discover'])->middleware('not-demo')->name('settings.calendar.nextcloud.discover');
+        Route::post('settings/calendar/nextcloud/select', [NextcloudCalendarController::class, 'select'])->middleware('not-demo')->name('settings.calendar.nextcloud.select');
+        Route::post('settings/calendar/nextcloud/sync', [NextcloudCalendarController::class, 'sync'])->middleware('not-demo')->name('settings.calendar.nextcloud.sync');
+        Route::delete('settings/calendar/nextcloud', [NextcloudCalendarController::class, 'destroy'])->middleware('not-demo')->name('settings.calendar.nextcloud.destroy');
+    });
 
     // Media library needs the active family (to list its uploads), so it also runs the family middleware.
     Route::middleware('family')->group(function () {

@@ -1,4 +1,4 @@
-// Shared inline icon set for the FamilyWell UI kits.
+// Shared inline icon set for the onsplan UI kits.
 // Phosphor/Lucide-style strokes at 1.75–2px. Exported to window for
 // cross-<script> sharing (Babel scripts don't share scope).
 const Ic = ({ d, size = 20, sw = 1.9, fill = false, children }) => (

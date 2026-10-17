@@ -32,11 +32,11 @@ class CalendarFeedController extends Controller
 
         $events = CalendarEvent::query()->visibleTo($feed->user_id)->get();
         $birthdays = app(ModuleRegistry::class)->isEnabled('birthdays', $feed->family_id) ? BirthdayDate::with('person')->get() : [];
-        $name = 'FamilyWell · '.Family::find($feed->family_id)?->name;
+        $name = 'onsplan · '.Family::find($feed->family_id)?->name;
 
         return response(Ics::calendar($name, $events, $birthdays, $user->locale), 200, [
             'Content-Type' => 'text/calendar; charset=utf-8',
-            'Content-Disposition' => 'inline; filename="familywell.ics"',
+            'Content-Disposition' => 'inline; filename="onsplan.ics"',
         ]);
     }
 

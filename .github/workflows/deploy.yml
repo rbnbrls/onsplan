@@ -54,8 +54,8 @@ jobs:
           push: true
           # :latest is what the App Platform spec pulls; the sha tag is for traceability/rollback.
           tags: |
-            ghcr.io/${{ github.repository_owner }}/familywell:latest
-            ghcr.io/${{ github.repository_owner }}/familywell:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/onsplan:latest
+            ghcr.io/${{ github.repository_owner }}/onsplan:${{ github.sha }}
           # Layer cache in Actions so unchanged deps (composer/npm) don't rebuild every push.
           cache-from: type=gha
           cache-to: type=gha,mode=max

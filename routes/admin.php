@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\AdminApiController;
 use App\Http\Middleware\EnsurePlatformAdmin;
 use Illuminate\Support\Facades\Route;
 
-// admin.familywell.org's platform API (read-only except the lifetime-access toggle) (the admin Worker calls it server-side with the admin's
+// admin.onsplan.nl's platform API (read-only except the lifetime-access toggle) (the admin Worker calls it server-side with the admin's
 // token). Bearer tokens only, so like routes/board.php it is loaded outside the `web` group.
 Route::middleware(['auth:api', EnsurePlatformAdmin::class, 'throttle:120,1'])->prefix('api/admin')->group(function () {
     Route::get('me', [AdminApiController::class, 'me']);

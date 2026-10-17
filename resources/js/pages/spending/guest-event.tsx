@@ -49,7 +49,7 @@ export default function GuestEvent({ token, event, guests, spends, balances, sug
     const t = useT();
     // Dynamic categories: key→def lookup for rendering the spend log (the form builds its own).
     const catMap = categoryMap(event.categories);
-    const storageKey = `familywell:guest:${token}`;
+    const storageKey = `onsplan:guest:${token}`;
     const [meId, setMeId] = useState<number | null>(null);
     // Read the saved identity after mount (no SSR window), and drop it if that guest was removed.
     useEffect(() => {
@@ -326,11 +326,11 @@ function Shell({ title, children }: { title: string; children: React.ReactNode }
     const t = useT();
     return (
         <div className="bg-background min-h-screen">
-            <Head title={`${title} · FamilyWell`} />
+            <Head title={`${title} · onsplan`} />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-4">
                 <div className="flex items-center gap-2 pt-2">
                     <span className="bg-tile text-tile-foreground flex size-7 items-center justify-center rounded-lg text-xs font-bold">FW</span>
-                    <span className="text-muted-foreground text-sm">FamilyWell · {t('spending.shared_with_you')}</span>
+                    <span className="text-muted-foreground text-sm">onsplan · {t('spending.shared_with_you')}</span>
                 </div>
                 {children}
             </div>

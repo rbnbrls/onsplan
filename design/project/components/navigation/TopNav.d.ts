@@ -11,7 +11,7 @@ export interface TopNavUser {
 }
 
 export interface TopNavProps {
-  /** Wordmark text. Default "FamilyWell". */
+  /** Wordmark text. Default "onsplan". */
   brand?: string;
   /** Optional brand-mark icon node rendered before the wordmark. */
   mark?: React.ReactNode;

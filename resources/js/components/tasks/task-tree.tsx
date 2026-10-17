@@ -62,6 +62,7 @@ function AssigneeDot({ members, id }: { members: TaskMember[]; id: number | null
 
 export function TaskTree({ tasks, members, canEdit, addUrl, taskUrl, reorderUrl, emptyHint, addInputRef }: Props) {
     const t = useT();
+    const inputRef = useRef<HTMLInputElement>(null);
     const doneOpt = useOptimistic<boolean>();
     // Optimistic removal: a deleted task (and its sub-tasks) disappears immediately, reappearing only
     // if the DELETE fails. Overlay on the local mirror rather than mutating it, so a failed delete
@@ -116,7 +117,12 @@ export function TaskTree({ tasks, members, canEdit, addUrl, taskUrl, reorderUrl,
         );
     };
     const addTask = () => {
-        if (!newTitle.trim()) return;
+        if (!newTitle.trim()) {
+            // A tap on the prominent + with an empty field should give immediate feedback
+            // instead of appearing to do nothing.
+            window.setTimeout(() => inputRef.current?.focus(), 0);
+            return;
+        }
         router.post(addUrl, { title: newTitle.trim() }, { preserveScroll: true, onSuccess: () => setNewTitle('') });
     };
     const del = (id: number) => {
@@ -213,14 +219,26 @@ export function TaskTree({ tasks, members, canEdit, addUrl, taskUrl, reorderUrl,
             {canEdit && (
                 <div className="mt-1 flex items-center gap-2">
                     <Input
-                        ref={addInputRef}
+                        ref={(node) => {
+                            inputRef.current = node;
+                            if (typeof addInputRef === 'function') addInputRef(node);
+                            else if (addInputRef) addInputRef.current = node;
+                        }}
                         value={newTitle}
                         onChange={(e) => setNewTitle(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && addTask()}
                         placeholder={t('tasks.add_task_placeholder')}
                         className="text-base md:text-sm"
                     />
-                    <Button size="icon" className="shrink-0 rounded-lg" onClick={addTask} aria-label={t('tasks.add_task')}>
+                    <Button
+                        size="icon"
+                        className="shrink-0 rounded-lg"
+                        onMouseDown={(event) => {
+                            if (!newTitle.trim()) event.preventDefault();
+                        }}
+                        onClick={addTask}
+                        aria-label={t('tasks.add_task')}
+                    >
                         <Plus className="size-5" />
                     </Button>
                 </div>

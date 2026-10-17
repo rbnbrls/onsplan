@@ -7,7 +7,7 @@
              drawer's pinned footer sits right above it. --}}
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 
-        <title inertia>{{ config('app.name', 'Familywell') }}</title>
+        <title inertia>{{ config('app.name', 'onsplan') }}</title>
 
         {{-- Installable PWA: added to the home screen it launches full-screen (no browser chrome).
              iOS reads the apple-* tags; Android/Chrome read the manifest. --}}
@@ -18,7 +18,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="default">
-        <meta name="apple-mobile-web-app-title" content="FamilyWell">
+        <meta name="apple-mobile-web-app-title" content="onsplan">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
         {{-- Rounded tile for browser tabs and favicon lookups (e.g. the assistant connector icon). The
              apple-touch-icon stays square: iOS masks it itself. --}}
@@ -27,10 +27,10 @@
 
         {{-- Brand fonts (Playfair, Inter, Geist Mono) are bundled via @fontsource in app.tsx; no CDN. --}}
 
-        <script>window.__familywellModules = @json($moduleFrontends ?? []);</script>
+        <script>window.__onsplanModules = @json($moduleFrontends ?? []);</script>
         <script>
-            window.__familywellReverb = @json($reverb ?? null);
-            window.__familywellFamilyId = @json($activeFamilyId ?? null);
+            window.__onsplanReverb = @json($reverb ?? null);
+            window.__onsplanFamilyId = @json($activeFamilyId ?? null);
         </script>
 
         @routes
@@ -39,7 +39,7 @@
         @inertiaHead
 
         {{-- Umami (cookieless; tracks Inertia page changes through the History API). Only when a website id
-             is configured, i.e. on hosted familywell.co. data-domains keeps other hosts (local, staging) out. --}}
+             is configured, i.e. on hosted onsplan.nl. data-domains keeps other hosts (local, staging) out. --}}
         @if (config('services.umami.website_id'))
             <script defer src="{{ config('services.umami.script') }}" data-website-id="{{ config('services.umami.website_id') }}" data-domains="{{ parse_url(config('app.url'), PHP_URL_HOST) }}"></script>
         @endif

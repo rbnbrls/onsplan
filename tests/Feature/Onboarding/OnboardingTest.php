@@ -73,7 +73,7 @@ it('does not let an onboarded user create a second family through onboarding', f
     expect($user->fresh()->families)->toHaveCount(1);
 });
 
-it('starts a new family with every module on and leaves existing families alone', function () {
+it('starts a new family with the core modules on and leaves existing families alone', function () {
     test()->artisan('modules:migrate')->assertExitCode(0);
     $registry = app(ModuleRegistry::class);
     $existing = Family::factory()->create();
@@ -83,6 +83,6 @@ it('starts a new family with every module on and leaves existing families alone'
     actingAs($user)->post('/onboarding', ['name' => 'New', 'color' => '#2D5E3A', 'emoji' => '🏡'])->assertRedirect();
 
     $family = $user->fresh()->families()->first();
-    expect($registry->enabledIds($family->id))->toEqualCanonicalizing(array_keys($registry->discover()))
+    expect($registry->enabledIds($family->id))->toEqualCanonicalizing(ModuleRegistry::DEFAULT_ENABLED_MODULES)
         ->and(DB::table('family_modules')->where('family_id', $existing->id)->pluck('module_id')->all())->toBe(['tasks']);
 });

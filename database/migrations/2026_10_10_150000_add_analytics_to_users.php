@@ -6,9 +6,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-// Per-user analytics (hosted familywell.co only, see App\Support\Analytics):
+// Per-user analytics (hosted onsplan.nl only, see App\Support\Analytics):
 //   - analytics_id: a random UUID that is the person's ONLY identity in Umami (never the user id, name or
-//     email). A new user gets one on create (User::booted), or adopts the familywell.org visitor id they
+//     email). A new user gets one on create (User::booted), or adopts the onsplan.nl visitor id they
 //     arrived with, so pre-signup visits on the marketing site and in-app use join up.
 //   - first_touch: where they came from before signing up ({source, medium, campaign, referrer,
 //     landing_path, at}), for the admin's user page.

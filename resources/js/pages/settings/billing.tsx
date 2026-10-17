@@ -159,7 +159,7 @@ function SubscriptionCard({
     );
 }
 
-// Full-screen paywall, laid out like the familywell.org pricing section: pitch on the left, the plan
+// Full-screen paywall, laid out like the onsplan.nl pricing section: pitch on the left, the plan
 // card (with its CTA) on the right; stacked on mobile. Sign out stays reachable since nothing else is.
 function Paywall({
     familyName,
@@ -212,7 +212,7 @@ function Paywall({
                     </h1>
                     <p className="text-muted-foreground text-lg">{t('billing.locked_desc', { family: familyName })}</p>
                     <a
-                        href="https://familywell.org/#features"
+                        href="https://onsplan.nl/#features"
                         target="_blank"
                         rel="noopener"
                         className="text-primary inline-flex items-center gap-1 self-center text-sm font-semibold underline underline-offset-4 lg:self-start"
@@ -243,7 +243,7 @@ function Paywall({
     );
 }
 
-// Mirrors the "Hosted FamilyWell" card on familywell.org (bvdr/familywell-site, #pricing), so the price
+// Mirrors the "Hosted onsplan" card on onsplan.nl (bvdr/onsplan-site, #pricing), so the price
 // promise reads the same in-app. Brand colours are literal on purpose: this card is not skinned.
 // ponytail: prices are copy in lang/billing.json, not fetched from Stripe; keep them in sync with the
 // STRIPE_PRICE_* prices (or fetch them if prices start changing often).

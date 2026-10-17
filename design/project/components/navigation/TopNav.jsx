@@ -2,13 +2,13 @@ import React from "react";
 import { Avatar } from "../core/Avatar.jsx";
 
 /**
- * FamilyWell TopNav.
+ * onsplan TopNav.
  * Source: component/TopNav — white bar, 64px, bottom border. Brand mark +
  * wordmark (Playfair) on the left with nav links; family switcher + user
  * trigger on the right.
  */
 export function TopNav({
-  brand = "FamilyWell",
+  brand = "onsplan",
   mark = null,
   links = [],
   activeLink,

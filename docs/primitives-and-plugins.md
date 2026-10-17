@@ -1,13 +1,13 @@
 # Primitives & Plugins
 
-> **Status:** design draft. This proposes how FamilyWell evolves its existing module
+> **Status:** design draft. This proposes how onsplan evolves its existing module
 > system into a **third-party plugin platform** built on **primitives** and **hooks**.
 > Nothing here is built yet beyond the pieces called out under "What already exists".
 > Read [modules.md](modules.md) first — this doc extends it.
 
 ## 1. The idea in one paragraph
 
-Some things in FamilyWell are **primitives**: a to-do item, a note, a spend event —
+Some things in onsplan are **primitives**: a to-do item, a note, a spend event —
 each with a canonical data shape and canonical screens (a list row, an edit screen). A
 primitive is registered once, in a known place, under a stable **type slug**
 (`task`, `note`, `spend_event`). A **plugin** is a self-contained package that **extends
@@ -35,11 +35,11 @@ hub platforms — have already walked this path; §7 distills what they got righ
 
 The distinction that matters: a **capability** is a primitive reaching *out* to a shared
 service it chose. A **hook** is a plugin reaching *in* to a primitive it doesn't own.
-Everything FamilyWell has today is the first kind. The plugin platform is the second kind.
+Everything onsplan has today is the first kind. The plugin platform is the second kind.
 
 ## 3. What already exists (and what's missing)
 
-FamilyWell is already ~70% of the way here. The primitives-and-capabilities layer is real
+onsplan is already ~70% of the way here. The primitives-and-capabilities layer is real
 and reused across every feature module. What's missing is precisely the *reach-in*
 direction.
 
@@ -60,11 +60,11 @@ direction.
   (`modules/important_todos/ImportantTodosServiceProvider.php`) listens to them. (Grep `\$hooks->`, not `Hooks::` —
   callers use the injected instance, not the static class.)
 - **A working frontend slot runtime** — `resources/js/lib/modules.ts` provides a real
-  `<Slot>` + `registerSlot`, and `app.tsx` exposes `window.Familywell = { React,
+  `<Slot>` + `registerSlot`, and `app.tsx` exposes `window.onsplan = { React,
   registerSlot }` so a **prebuilt module bundle reuses the shell's React with no bundler
   and no second React**. Delivery is fully wired end to end: `ShareModules` middleware
   collects each enabled module's `frontend` URL → `app.blade.php` sets
-  `window.__familywellModules` → `loadModules()` dynamic-imports them →
+  `window.__onsplanModules` → `loadModules()` dynamic-imports them →
   `ModuleAssetController` serves the file. `important_todos` ships `resources/dist/important-todos.js` that
   `registerSlot('task.editor.fields', …)` through exactly this path.
 - **Dashboard extension** — `DashboardItems::register(id, closure)` lets a module push
@@ -123,7 +123,7 @@ from ad-hoc `fire()` calls into a **declared, discoverable, versionable contract
 **Plugins may register *new* primitives, not just extend existing ones.** This is the
 WordPress **custom post type** lesson (§7): WooCommerce didn't ask WordPress core to add a
 "product" — it called `register_post_type()` and declared one, and that single decision is
-what made the ecosystem. A FamilyWell plugin calling `PrimitiveRegistry::register()` for
+what made the ecosystem. A onsplan plugin calling `PrimitiveRegistry::register()` for
 its own entity gets sharing, notifications, and dashboard surfacing for free, exactly as a
 first-party module does. (The trust bar for this is higher than for extending — see §13.)
 
@@ -187,7 +187,7 @@ The backend can't do this; React must. The primitive's edit screen declares **na
 and plugin bundles **register components** into them — WordPress's **meta box** pattern
 (`add_meta_box`) and Home Assistant's **custom card** pattern, in React. The runtime for this
 **already existed** (`resources/js/lib/modules.ts` — `<Slot>` + `registerSlot`, loaded via
-`window.Familywell`); the only change needed to ship the example was teaching `<Slot>` to
+`window.onsplan`); the only change needed to ship the example was teaching `<Slot>` to
 forward a `ctx` to its children (it previously passed none, so a slot component could only
 self-source data). Below is the shipped shape:
 
@@ -200,7 +200,7 @@ self-source data). Below is the shipped shape:
 
 // Plugin frontend bundle — a prebuilt file using the shell's React (no bundler), like
 // modules/important_todos. Loaded only for families that enabled the module.
-const { React, registerSlot } = window.Familywell;
+const { React, registerSlot } = window.onsplan;
 registerSlot('task.editor.fields', ({ task, onPatch }) => /* an Important toggle → onPatch({important}) */);
 registerSlot('task.row.badges',   ({ task }) => task.important ? /* a star */ : null);
 ```
@@ -246,7 +246,7 @@ architecture converges; the trust models diverge, and that divergence is the les
 
 Your `Hooks` bus is explicitly WordPress-modeled, so the mapping is 1:1:
 
-| WordPress | FamilyWell |
+| WordPress | onsplan |
 |---|---|
 | `do_action` / `add_action` | `Hooks::fire` / `listen` |
 | `apply_filters` / `add_filter` | `Hooks::filter` |
@@ -313,13 +313,13 @@ API** — you can't just `import` anything. This is the endgame for a fully open
 Everyone lands on **actions/filters (or an event bus) + a reviewed first-party tier + a
 looser community tier**. The only real variable is *where the trust boundary sits*:
 WordPress/HA push it to the user and accept the risk; SmartThings/Homey build a sandbox and
-pay for it. FamilyWell's twist — hosted, multi-tenant, shared family data — is why §8 can't
+pay for it. onsplan's twist — hosted, multi-tenant, shared family data — is why §8 can't
 just copy HACS wholesale.
 
 ## 8. Trust & deployment: who can run what
 
 For **internal** extensibility this section is nearly empty — first-party modules are
-trusted. For **third-party** plugins it is the whole game. FamilyWell holds families'
+trusted. For **third-party** plugins it is the whole game. onsplan holds families'
 private financial and personal data; a malicious or buggy plugin is a data-breach vector.
 
 ### 8.1 The honest constraint
@@ -332,7 +332,7 @@ private financial and personal data; a malicious or buggy plugin is a data-breac
   session cookie, and every Inertia prop. Arbitrary plugin JS can exfiltrate everything the
   logged-in user can see.
 
-So "any developer uploads a plugin and it runs on hosted FamilyWell" is **not** a safe v1.
+So "any developer uploads a plugin and it runs on hosted onsplan" is **not** a safe v1.
 The resolution is two axes: a **trust tier** for the plugin (§8.2) and the **deployment**
 it runs in (§8.3).
 
@@ -342,7 +342,7 @@ Not every extension needs to run code. Sort plugins by *what they're allowed to 
 
 1. **Declarative extensions — no code, no sandbox, no review needed.** A JSON description
    the platform interprets against a fixed, safe vocabulary — the plugin never executes.
-   Shareable freely, hosted-safe, installable by anyone — the FamilyWell equivalent of a
+   Shareable freely, hosted-safe, installable by anyone — the onsplan equivalent of a
    Home Assistant **blueprint** (a pure-config extension you import with no risk). The
    validation in §14 (14 real plugin ideas) shows **~70% of plausible plugins are
    declarative**, and that this tier splits cleanly into two sub-levels worth building
@@ -375,7 +375,7 @@ a trust problem, and you only pay review/sandbox costs for genuine code.
 The blast radius of "at your own risk" depends on whose box and whose data. Make the split
 follow the deployment, validated by WordPress.com (§7.1):
 
-| | **Self-hosted FamilyWell** | **Hosted (multi-tenant SaaS)** |
+| | **Self-hosted onsplan** | **Hosted (multi-tenant SaaS)** |
 |---|---|---|
 | Tier 1 (declarative) | ✅ anyone | ✅ anyone |
 | Tier 2 (reviewed code) | ✅ | ✅ marketplace only |
@@ -562,7 +562,7 @@ first-party code before exposing it to anyone.
 ## 13. Open decisions
 
 1. **Trust target for hosted "third-party" — resolved: stop at reviewed.** Hosted
-   FamilyWell caps at Phase 4: declarative (tier 1) for anyone, reviewed+signed code
+   onsplan caps at Phase 4: declarative (tier 1) for anyone, reviewed+signed code
    (tier 2) through the marketplace, and **no unreviewed code and no sandboxing investment**
    (no Phase 5). This is where WordPress.com and Home Assistant's core tier sit. Unreviewed,
    full-trust code (tier 3) remains a **self-host-only** option (§8.3). Revisit only if a
@@ -591,7 +591,7 @@ first-party code before exposing it to anyone.
 
 ### 14.1 Does "a large fraction" hold? (14 real plugin ideas)
 
-Each idea mapped to what it actually needs, against FamilyWell's real primitives
+Each idea mapped to what it actually needs, against onsplan's real primitives
 (`task`, `note`, `spend`, `shopping`, `project`). Tiers per §8.2.
 
 | # | Plugin idea | Primitive | What it needs | Tier |

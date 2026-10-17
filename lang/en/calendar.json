@@ -60,5 +60,21 @@
     "share": "Share",
     "previous": "Previous",
     "next": "Next",
-    "options": "Event options"
+    "options": "Event options",
+    "outlook_desc": "Synchronize this family calendar with one Microsoft Outlook calendar.",
+    "outlook_not_configured": "Microsoft Outlook integration is not configured by the administrator.",
+    "choose_outlook": "Choose an Outlook calendar",
+    "connect_outlook": "Connect Outlook",
+    "save_connection": "Save connection",
+    "connection_active": "Two-way sync is active.",
+    "connection_error": "The connection needs attention.",
+    "sync_now": "Sync now",
+    "change_calendar": "Change calendar",
+    "disconnect": "Disconnect",
+    "disconnect_confirm": "Disconnect this Outlook calendar? Existing onsplan events remain.",
+    "nextcloud_desc": "Synchronize this family calendar with a Nextcloud CalDAV calendar.",
+    "nextcloud_username": "Nextcloud username",
+    "nextcloud_app_password": "Nextcloud app password",
+    "connect_nextcloud": "Connect Nextcloud",
+    "settings": "Calendar"
 }

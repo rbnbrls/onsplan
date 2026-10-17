@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell TabBar — the floating mobile bottom navigation. Translucent
+ * onsplan TabBar — the floating mobile bottom navigation. Translucent
  * white pill, soft shadow, pill-highlighted active tab (accent-subtle well
  * with accent icon+label). Items pass their own icon nodes (Lucide).
  */

@@ -1,8 +1,8 @@
-/* @ds-bundle: {"format":4,"namespace":"FamilyWellDesignSystem_c7911f","components":[{"name":"AVATAR_TINTS","sourcePath":"components/core/Avatar.jsx"},{"name":"Avatar","sourcePath":"components/core/Avatar.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Checkbox","sourcePath":"components/core/Checkbox.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Input","sourcePath":"components/core/Input.jsx"},{"name":"TabBar","sourcePath":"components/navigation/TabBar.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"}],"sourceHashes":{"components/core/Avatar.jsx":"0415c1418c60","components/core/Badge.jsx":"60c29210c931","components/core/Button.jsx":"91e070dde356","components/core/Card.jsx":"125a54a965fe","components/core/Checkbox.jsx":"d9b5272f8cee","components/core/IconButton.jsx":"b064a3a25241","components/core/Input.jsx":"a3bbddcd94ad","components/navigation/TabBar.jsx":"7c37040f01e4","components/navigation/TopNav.jsx":"11a9ac193bd6","ui_kits/_shared/icons.jsx":"fb3cb404f653","ui_kits/web-app/WebDashboard.jsx":"7902fa762c46","ui_kits/web-app/WebLogin.jsx":"70f38ed91718","ui_kits/web-app/WebTodos.jsx":"65214d695b28"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"OnsplanDesignSystem_c7911f","components":[{"name":"AVATAR_TINTS","sourcePath":"components/core/Avatar.jsx"},{"name":"Avatar","sourcePath":"components/core/Avatar.jsx"},{"name":"Badge","sourcePath":"components/core/Badge.jsx"},{"name":"Button","sourcePath":"components/core/Button.jsx"},{"name":"Card","sourcePath":"components/core/Card.jsx"},{"name":"Checkbox","sourcePath":"components/core/Checkbox.jsx"},{"name":"IconButton","sourcePath":"components/core/IconButton.jsx"},{"name":"Input","sourcePath":"components/core/Input.jsx"},{"name":"TabBar","sourcePath":"components/navigation/TabBar.jsx"},{"name":"TopNav","sourcePath":"components/navigation/TopNav.jsx"}],"sourceHashes":{"components/core/Avatar.jsx":"0415c1418c60","components/core/Badge.jsx":"60c29210c931","components/core/Button.jsx":"91e070dde356","components/core/Card.jsx":"125a54a965fe","components/core/Checkbox.jsx":"d9b5272f8cee","components/core/IconButton.jsx":"b064a3a25241","components/core/Input.jsx":"a3bbddcd94ad","components/navigation/TabBar.jsx":"7c37040f01e4","components/navigation/TopNav.jsx":"11a9ac193bd6","ui_kits/_shared/icons.jsx":"fb3cb404f653","ui_kits/web-app/WebDashboard.jsx":"7902fa762c46","ui_kits/web-app/WebLogin.jsx":"70f38ed91718","ui_kits/web-app/WebTodos.jsx":"65214d695b28"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
-const __ds_ns = (window.FamilyWellDesignSystem_c7911f = window.FamilyWellDesignSystem_c7911f || {});
+const __ds_ns = (window.OnsplanDesignSystem_c7911f = window.OnsplanDesignSystem_c7911f || {});
 
 const __ds_scope = {};
 
@@ -40,7 +40,7 @@ const AVATAR_TINTS = {
 };
 
 /**
- * FamilyWell Avatar — circular, initial-based (Playfair) or image.
+ * onsplan Avatar — circular, initial-based (Playfair) or image.
  * Tints match the family-member swatches from the source screens.
  */
 function Avatar({
@@ -86,7 +86,7 @@ Object.assign(__ds_scope, { AVATAR_TINTS, Avatar });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell Badge — small status / count pill. Neutral, accent, warning,
+ * onsplan Badge — small status / count pill. Neutral, accent, warning,
  * error and outline variants. Used for task counts, assignees, statuses.
  */
 function Badge({
@@ -168,7 +168,7 @@ Object.assign(__ds_scope, { Badge });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell Button.
+ * onsplan Button.
  * Source: component/PrimaryButton (accent fill, radius-md, 15/20 padding,
  * Inter 15/600). Secondary + ghost variants derive from the "Invite" and
  * nav-link treatments seen across the web screens.
@@ -263,7 +263,7 @@ Object.assign(__ds_scope, { Button });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell Card — the white surface panel used everywhere (task rows,
+ * onsplan Card — the white surface panel used everywhere (task rows,
  * stat cards, list panels). Soft border, radius-md/lg, optional shadow.
  */
 function Card({
@@ -324,7 +324,7 @@ Object.assign(__ds_scope, { Card });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell Checkbox — 22px rounded (radius-sm) box. Unchecked = bordered,
+ * onsplan Checkbox — 22px rounded (radius-sm) box. Unchecked = bordered,
  * checked = accent fill with white tick. Matches the task-list rows.
  */
 function Checkbox({
@@ -388,7 +388,7 @@ Object.assign(__ds_scope, { Checkbox });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell IconButton — a square/circular button holding a single icon.
+ * onsplan IconButton — a square/circular button holding a single icon.
  * Mirrors the icon-well treatment (accent-subtle round wells, bordered
  * surface squares) used in the top nav and quick-action rows.
  */
@@ -450,7 +450,7 @@ Object.assign(__ds_scope, { IconButton });
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
 /**
- * FamilyWell InputField.
+ * onsplan InputField.
  * Source: component/InputField — label (Inter 14/500) + white box with
  * 1px border, radius-md, 14/16 padding, muted placeholder, optional helper
  * (error state turns border + helper red).
@@ -536,7 +536,7 @@ Object.assign(__ds_scope, { Input });
 // components/navigation/TabBar.jsx
 try { (() => {
 /**
- * FamilyWell TabBar — the floating mobile bottom navigation. Translucent
+ * onsplan TabBar — the floating mobile bottom navigation. Translucent
  * white pill, soft shadow, pill-highlighted active tab (accent-subtle well
  * with accent icon+label). Items pass their own icon nodes (Lucide).
  */
@@ -606,13 +606,13 @@ Object.assign(__ds_scope, { TabBar });
 // components/navigation/TopNav.jsx
 try { (() => {
 /**
- * FamilyWell TopNav.
+ * onsplan TopNav.
  * Source: component/TopNav — white bar, 64px, bottom border. Brand mark +
  * wordmark (Playfair) on the left with nav links; family switcher + user
  * trigger on the right.
  */
 function TopNav({
-  brand = "FamilyWell",
+  brand = "onsplan",
   mark = null,
   links = [],
   activeLink,
@@ -738,7 +738,7 @@ Object.assign(__ds_scope, { TopNav });
 // ui_kits/_shared/icons.jsx
 try { (() => {
 function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-// Shared inline icon set for the FamilyWell UI kits.
+// Shared inline icon set for the onsplan UI kits.
 // Phosphor/Lucide-style strokes at 1.75–2px. Exported to window for
 // cross-<script> sharing (Babel scripts don't share scope).
 const Ic = ({
@@ -921,14 +921,14 @@ Object.assign(window, {
 
 // ui_kits/web-app/WebDashboard.jsx
 try { (() => {
-// FamilyWell Web · Core Dashboard — stat row, Today card, side rail.
+// onsplan Web · Core Dashboard — stat row, Today card, side rail.
 const {
   Card,
   Badge,
   Avatar,
   Checkbox,
   Button: FWButton
-} = window.FamilyWellDesignSystem_c7911f;
+} = window.OnsplanDesignSystem_c7911f;
 function Stat({
   icon,
   well,
@@ -1252,11 +1252,11 @@ window.WebDashboard = WebDashboard;
 
 // ui_kits/web-app/WebLogin.jsx
 try { (() => {
-// FamilyWell Web · Login — split brand panel + form.
+// onsplan Web · Login — split brand panel + form.
 const {
   Button,
   Input
-} = window.FamilyWellDesignSystem_c7911f;
+} = window.OnsplanDesignSystem_c7911f;
 function WebLogin({
   onSignIn
 }) {
@@ -1293,7 +1293,7 @@ function WebLogin({
       fontWeight: 600,
       color: "var(--text-inverse)"
     }
-  }, "FamilyWell")), /*#__PURE__*/React.createElement("div", {
+  }, "onsplan")), /*#__PURE__*/React.createElement("div", {
     style: {
       height: 340,
       borderRadius: "var(--radius-lg)",
@@ -1395,13 +1395,13 @@ window.WebLogin = WebLogin;
 
 // ui_kits/web-app/WebTodos.jsx
 try { (() => {
-// FamilyWell Web · Todos & Shopping — two-pane list view.
+// onsplan Web · Todos & Shopping — two-pane list view.
 const {
   Card,
   Badge,
   Checkbox,
   Button: TBtn
-} = window.FamilyWellDesignSystem_c7911f;
+} = window.OnsplanDesignSystem_c7911f;
 function WebTodos() {
   const I = window.Icons;
   const lists = [{

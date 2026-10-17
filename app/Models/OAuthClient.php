@@ -11,7 +11,7 @@ use Laravel\Passport\Client;
 // permissions screen (AuthorizeController / ApproveController refuse it). The flag lives on the client
 // (not in an env list) because an env list drifted from production once: the board client was then
 // treated like an MCP client and was handed module read/write scopes. A client also flagged platform_admin
-// is admin.familywell.org: it asks for exactly board:identity + admin. Registered with
+// is admin.onsplan.nl: it asks for exactly board:identity + admin. Registered with
 // Passport::useClientModel() in AppServiceProvider.
 class OAuthClient extends Client
 {

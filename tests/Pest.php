@@ -139,17 +139,17 @@ function mcpAuthorizeQuery(string $clientId, string $redirect = 'https://claude.
 }
 
 /** Confidential authorization-code client for the module-requests board, marked first_party on its row. */
-function boardClient(string $redirect = 'https://familywell.org/api/auth/callback'): OAuthClient
+function boardClient(string $redirect = 'https://onsplan.nl/api/auth/callback'): OAuthClient
 {
     mcpKeys();
     /** @var OAuthClient $client */
-    $client = app(ClientRepository::class)->createAuthorizationCodeGrantClient('FamilyWell board', [$redirect]);
+    $client = app(ClientRepository::class)->createAuthorizationCodeGrantClient('onsplan board', [$redirect]);
     $client->forceFill(['first_party' => true])->save();
 
     return $client;
 }
 
-/** The admin.familywell.org client: a board client also flagged platform_admin (same callback, so boardToken works). */
+/** The admin.onsplan.nl client: a board client also flagged platform_admin (same callback, so boardToken works). */
 function adminClient(): OAuthClient
 {
     $client = boardClient();
@@ -159,7 +159,7 @@ function adminClient(): OAuthClient
 }
 
 /** PKCE authorize query for a board client. Returns [query, verifier]. */
-function boardAuthorizeQuery(OAuthClient $client, string $scope = 'board:identity', string $redirect = 'https://familywell.org/api/auth/callback'): array
+function boardAuthorizeQuery(OAuthClient $client, string $scope = 'board:identity', string $redirect = 'https://onsplan.nl/api/auth/callback'): array
 {
     $verifier = Str::random(64);
     $challenge = rtrim(strtr(base64_encode(hash('sha256', $verifier, true)), '+/', '-_'), '=');
@@ -187,7 +187,7 @@ function boardToken(User $user, OAuthClient $client, string $scope = 'board:iden
 
     return test()->post('/oauth/token', [
         'grant_type' => 'authorization_code', 'client_id' => $client->getKey(), 'client_secret' => $client->plainSecret,
-        'redirect_uri' => 'https://familywell.org/api/auth/callback', 'code' => $params['code'], 'code_verifier' => $verifier,
+        'redirect_uri' => 'https://onsplan.nl/api/auth/callback', 'code' => $params['code'], 'code_verifier' => $verifier,
     ])->assertOk()->json();
 }
 

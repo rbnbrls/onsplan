@@ -126,7 +126,7 @@ class SocialLogin
             'expires' => now()->getTimestamp() + 600,  // now(), not time(): honours the test clock (travel()).
             'intended' => $request->session()->get('url.intended'),
             'invite' => $request->session()->get('invite_token'),
-            // The guest's familywell.org visitor id + first touch (CaptureFirstTouch), so an Apple sign-UP
+            // The guest's onsplan.nl visitor id + first touch (CaptureFirstTouch), so an Apple sign-UP
             // can still adopt them in the new session. Small: two capped strings and a short array.
             'analytics' => $request->session()->get('analytics'),
         ]);
@@ -254,7 +254,7 @@ class SocialLogin
             throw new SocialLoginException('auth.social_no_email');
         }
         // Only a provider-verified email may link to (or claim) an account: otherwise anyone could add an
-        // unverified address at the provider and walk into someone else's FamilyWell account.
+        // unverified address at the provider and walk into someone else's onsplan account.
         if (! $identity['email_verified']) {
             throw new SocialLoginException('auth.social_unverified');
         }
@@ -273,7 +273,7 @@ class SocialLogin
                 return AuthenticatedSessionController::signedIn($request);
             }
 
-            // Unverified account: NEVER link by email alone. FamilyWell doesn't make people verify their
+            // Unverified account: NEVER link by email alone. onsplan doesn't make people verify their
             // address, so anyone can register (or switch their profile to) someone else's email in advance;
             // auto-linking would then log the real owner into the account the attacker controls. So the person
             // proves they own THIS account with its password first: we park the link, send them to the login

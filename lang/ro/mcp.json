@@ -1,6 +1,6 @@
 {
     "consent_head": "Conectează o aplicație",
-    "consent_title": "Conectează :app la Familywell",
+    "consent_title": "Conectează :app la onsplan",
     "consent_desc": "Alege o familie și ce poate vedea sau schimba aplicația. O poți deconecta oricând din Setări.",
     "family": "Familie",
     "what_it_can_do": "Acces la :family",
@@ -13,8 +13,8 @@
     "no_family": "Trebuie să faci parte dintr-o familie înainte să conectezi o aplicație.",
     "allow": "Permite",
     "connected_apps": "Aplicații conectate",
-    "connected_apps_desc": "Asistenți AI și alte aplicații conectate la Familywell.",
-    "connected_none": "Nicio aplicație conectată încă. Adaugă Familywell în Claude, ChatGPT sau alt asistent folosind adresa de mai jos.",
+    "connected_apps_desc": "Asistenți AI și alte aplicații conectate la onsplan.",
+    "connected_none": "Nicio aplicație conectată încă. Adaugă onsplan în Claude, ChatGPT sau alt asistent folosind adresa de mai jos.",
     "server_url": "Adresa serverului MCP",
     "connected_on": "Conectată :date",
     "expires_on": "Rămâne conectată până la :date dacă nu e folosită",

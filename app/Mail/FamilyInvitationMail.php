@@ -19,7 +19,7 @@ class FamilyInvitationMail extends Mailable
     {
         $family = $this->invitation->family->name;
 
-        return new Envelope(subject: "You're invited to join {$family} on Familywell");
+        return new Envelope(subject: "You're invited to join {$family} on onsplan");
     }
 
     public function content(): Content

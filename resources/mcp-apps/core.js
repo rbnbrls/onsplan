@@ -53,7 +53,7 @@ const FW = (() => {
             // facts (shape, size, how it ends) are what tells a truncated or rewrapped result apart.
             const types = (result.content || []).map((c) => c.type).join(',') || 'none';
             throw new Error(
-                `Couldn't read Familywell's answer (blocks: ${types}; ${text.length} chars; ends: "${text.slice(-30)}"; keys: ${Object.keys(result).join(',')}).`,
+                `Couldn't read onsplan's answer (blocks: ${types}; ${text.length} chars; ends: "${text.slice(-30)}"; keys: ${Object.keys(result).join(',')}).`,
             );
         }
     }
@@ -81,7 +81,7 @@ const FW = (() => {
     // (App\Mcp\Tool::shouldRegister hides it): say so in words people can act on.
     function friendly(err) {
         const msg = err?.message || String(err);
-        return /tool .*not found/i.test(msg) ? 'This connection can only read here. Reconnect Familywell with "Read & write" to make changes.' : msg;
+        return /tool .*not found/i.test(msg) ? 'This connection can only read here. Reconnect onsplan with "Read & write" to make changes.' : msg;
     }
 
     async function call(name, a) {
@@ -126,7 +126,7 @@ const FW = (() => {
     function note(text) {
         log.push(text);
         app.updateModelContext({
-            content: [{ type: 'text', text: 'In the Familywell widget the person: ' + log.slice(-20).join('; ') + '.' }],
+            content: [{ type: 'text', text: 'In the onsplan widget the person: ' + log.slice(-20).join('; ') + '.' }],
         }).catch(() => {});
     }
 
@@ -186,7 +186,7 @@ const FW = (() => {
         return Number(n).toLocaleString(locale, opts);
     }
 
-    // Header: actions row (Full screen, Open in Familywell) on TOP, then the title at full width, then the
+    // Header: actions row (Full screen, Open in onsplan) on TOP, then the title at full width, then the
     // metadata line. Hosts render widgets ~360px wide on phones; with the actions beside the title, the
     // title got squeezed to one word per line (seen on the recipe view in ChatGPT on iPhone).
     // opts.hero: an element (a photo) shown full width between the actions row and the title.
@@ -199,7 +199,7 @@ const FW = (() => {
                       mode === 'fullscreen' ? 'Exit full screen' : 'Full screen ⤢',
                   )
                 : null,
-            url ? h('button', { class: 'link', type: 'button', onclick: () => open(url) }, 'Open in Familywell ↗') : null,
+            url ? h('button', { class: 'link', type: 'button', onclick: () => open(url) }, 'Open in onsplan ↗') : null,
         ].filter(Boolean);
         return h(
             'div',

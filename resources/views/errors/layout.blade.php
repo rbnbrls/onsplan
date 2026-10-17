@@ -15,7 +15,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>@yield('title') · Familywell</title>
+    <title>@yield('title') · onsplan</title>
     <meta name="theme-color" content="#2D5E3A">
     <style id="theme">{!! $themeCss !!}</style>
     <style>
@@ -60,7 +60,7 @@
                     <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z" />
                 </svg>
             </span>
-            <span class="name">Familywell</span>
+            <span class="name">onsplan</span>
         </span>
 
         <div class="code">@yield('code')</div>

@@ -1,4 +1,4 @@
-// FamilyWell service worker — Web Push only (no offline caching; Octane serves fresh pages).
+// onsplan service worker — Web Push only (no offline caching; Octane serves fresh pages).
 // Shows a notification when a push arrives (even with the app closed) and focuses/opens the app on tap.
 
 self.addEventListener('install', () => self.skipWaiting());
@@ -19,7 +19,7 @@ self.addEventListener('push', (event) => {
             // exactly what happened, never collapsed into a "N new updates" count.
             const tag = payload.tag || undefined;
 
-            await self.registration.showNotification(payload.title || 'FamilyWell', {
+            await self.registration.showNotification(payload.title || 'onsplan', {
                 body: payload.body || '',
                 icon: payload.icon || '/icons/icon-192.png',
                 badge: payload.badge || '/icons/icon-192.png',

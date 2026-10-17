@@ -8,7 +8,7 @@ use Modules\Birthdays\BirthdayDate;
 /**
  * RFC 5545 output, hand-written (no dependency for ~60 lines). Events carry their repeat rule (RRULE) so the
  * subscriber expands it; RFC skip semantics for the 31st / Feb 29 match Occurrences. Times are FLOATING
- * (no TZID, no Z): FamilyWell stores wall-clock times, and floating times show as typed in any client.
+ * (no TZID, no Z): onsplan stores wall-clock times, and floating times show as typed in any client.
  */
 final class Ics
 {
@@ -22,8 +22,8 @@ final class Ics
      */
     public static function calendar(string $name, iterable $events, iterable $birthdays, ?string $locale = null): string
     {
-        $lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//FamilyWell//Calendar//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:'.self::text($name)];
-        $host = parse_url((string) config('app.url'), PHP_URL_HOST) ?: 'familywell.co';
+        $lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//onsplan//Calendar//EN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:'.self::text($name)];
+        $host = parse_url((string) config('app.url'), PHP_URL_HOST) ?: 'onsplan.nl';
         foreach ($events as $e) {
             $lines[] = 'BEGIN:VEVENT';
             $lines[] = "UID:event-{$e->id}@{$host}";

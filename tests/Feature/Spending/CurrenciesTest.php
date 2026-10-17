@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use App\Support\Modules\ModuleRegistry;
 use Modules\Spending\Currencies;
 use Modules\Spending\Fx;
 use Modules\Spending\SpendSetting;
@@ -52,6 +53,7 @@ it('accepts a list in any supported currency', function () {
     test()->artisan('modules:migrate')->assertExitCode(0);
     $user = User::factory()->create();
     actingAs($user)->post('/onboarding', ['name' => 'Tanaka', 'color' => '#2D5E3A', 'emoji' => '🏡']);
+    app(ModuleRegistry::class)->enable('spending', $user->fresh()->families()->first()->id);
     Http::fake(['*' => Http::response(['rates' => []])]);
 
     actingAs($user)->get('/m/spending')->assertInertia(fn ($page) => $page

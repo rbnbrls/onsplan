@@ -1,5 +1,5 @@
-// FamilyWell Web · Login — split brand panel + form.
-const { Button, Input } = window.FamilyWellDesignSystem_c7911f;
+// onsplan Web · Login — split brand panel + form.
+const { Button, Input } = window.OnsplanDesignSystem_c7911f;
 function WebLogin({ onSignIn }) {
   const I = window.Icons;
   return (
@@ -10,7 +10,7 @@ function WebLogin({ onSignIn }) {
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10, color: "var(--accent-light)" }}>
           <I.leaf size={26} />
-          <span style={{ fontFamily: "var(--font-heading)", fontSize: 24, fontWeight: 600, color: "var(--text-inverse)" }}>FamilyWell</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontSize: 24, fontWeight: 600, color: "var(--text-inverse)" }}>onsplan</span>
         </div>
         <div style={{
           height: 340, borderRadius: "var(--radius-lg)", overflow: "hidden",

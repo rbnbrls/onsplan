@@ -1,14 +1,14 @@
-# FamilyWell Design System
+# onsplan Design System
 
-FamilyWell is a calm, warm app for **organizing family life** — shared calendars, tasks, grocery/shopping lists, contacts, and family management, across a **mobile app**, a **responsive web app**, and **mobile web**. The brand voice is gentle and human; the visual world is earthy — forest greens on warm paper, serif display type, and soft nature illustrations. Tagline: *"Your family, beautifully organized."*
+onsplan is a calm, warm app for **organizing family life** — shared calendars, tasks, grocery/shopping lists, contacts, and family management, across a **mobile app**, a **responsive web app**, and **mobile web**. The brand voice is gentle and human; the visual world is earthy — forest greens on warm paper, serif display type, and soft nature illustrations. Tagline: *"Your family, beautifully organized."*
 
 ## Sources
-- `uploads/familywell.pen` — a **pencil.dev** design file (v2.14). The single source of truth: brand identity board, design tokens (its `variables` block), three explicit reusable components (`component/InputField`, `component/PrimaryButton`, `component/TopNav`), and ~40 product frames across Mobile app, Web, and Mobile-web.
+- `uploads/onsplan.pen` — a **pencil.dev** design file (v2.14). The single source of truth: brand identity board, design tokens (its `variables` block), three explicit reusable components (`component/InputField`, `component/PrimaryButton`, `component/TopNav`), and ~40 product frames across Mobile app, Web, and Mobile-web.
 - `design/images/*.png` — three brand illustrations, copied into `assets/img/` (`scene-1` sunset hillside walk, `scene-2` forest cottage, `scene-3` watercolor botanical).
 - No logo file was supplied — see **Logo** below.
 
 ## Components
-Reusable primitives (React, styled with CSS custom properties). Import from `window.FamilyWellDesignSystem_c7911f`.
+Reusable primitives (React, styled with CSS custom properties). Import from `window.OnsplanDesignSystem_c7911f`.
 - **Button** — primary / secondary / ghost / danger; sm/md/lg. (source `PrimaryButton`)
 - **IconButton** — single-icon control; subtle / surface / solid / ghost.
 - **Input** — labelled text field with helper + error states. (source `InputField`)
@@ -67,7 +67,7 @@ All three are Google Fonts (loaded via `tokens/fonts.css`). To fully self-host, 
 - **Emoji / unicode:** emoji used only as an occasional soft accent (🌿); no unicode glyphs used as functional icons.
 
 ## Logo
-No logo file was supplied. The source renders the brand as a **leaf/tree mark inside an accent-green circle** next to the **"FamilyWell" wordmark in Playfair Display** (see `foundations/brand-logo.html`). That icon-in-circle treatment is the source's own mark, reproduced with a Lucide-style leaf — it is **not** a reconstructed proprietary logo. **Ask the user for an official logo asset** if one exists.
+No logo file was supplied. The source renders the brand as a **leaf/tree mark inside an accent-green circle** next to the **"onsplan" wordmark in Playfair Display** (see `foundations/brand-logo.html`). That icon-in-circle treatment is the source's own mark, reproduced with a Lucide-style leaf — it is **not** a reconstructed proprietary logo. **Ask the user for an official logo asset** if one exists.
 
 ## Index — root manifest
 - `styles.css` — global entry (import this). Imports the four token files + base resets.

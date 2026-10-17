@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell Badge — small status / count pill. Neutral, accent, warning,
+ * onsplan Badge — small status / count pill. Neutral, accent, warning,
  * error and outline variants. Used for task counts, assignees, statuses.
  */
 export function Badge({

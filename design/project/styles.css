@@ -1,4 +1,4 @@
-/* FamilyWell Design System — global entry point.
+/* onsplan Design System — global entry point.
    Consumers link THIS file only. Keep it a list of @imports. */
 @import url("./tokens/fonts.css");
 @import url("./tokens/colors.css");

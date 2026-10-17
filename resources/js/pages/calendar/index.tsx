@@ -14,7 +14,7 @@ import { filterItems, shiftDate, ymd, type CalFilter, type CalItem } from '@/lib
 import { openNewOnArrival } from '@/lib/create-intent';
 import { useLocale, useT } from '@/lib/i18n';
 
-const FILTER_KEY = 'familywell:calendarFilter';
+const FILTER_KEY = 'onsplan:calendarFilter';
 const readFilter = (): CalFilter => {
     try {
         const v = JSON.parse(localStorage.getItem(FILTER_KEY) ?? '');
