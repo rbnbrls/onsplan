@@ -3,7 +3,7 @@
 // It fetches its own data from /m/inventory/widget (gated by module:inventory on the server) and
 // renders nothing while loading, when the module is off (the feed 404s), or when nothing needs
 // attention — so a healthy inventory adds no clutter to the dashboard. Mirrors the Birthdays widget.
-const { React, registerSlot } = window.Familywell;
+const { React, registerSlot } = window.onsplan;
 const h = React.createElement;
 
 // A short, human label + colour token per exception state. Colours match the app's state tokens

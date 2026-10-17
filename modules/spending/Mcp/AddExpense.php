@@ -20,7 +20,7 @@ class AddExpense extends Tool
 
     protected string $name = 'spending_add_expense';
 
-    protected string $description = 'Record an expense. Without list_id it goes to the family\'s default "Others" list. Leave category out to let Familywell guess it. If an expense with the same amount, date and shop already exists it is still added, and the response says so in `warning`.';
+    protected string $description = 'Record an expense. Without list_id it goes to the family\'s default "Others" list. Leave category out to let onsplan guess it. If an expense with the same amount, date and shop already exists it is still added, and the response says so in `warning`.';
 
     public function schema(JsonSchema $schema): array
     {

@@ -6,7 +6,7 @@ use Laravel\Passport\Token;
 
 use function Pest\Laravel\actingAs;
 
-// admin.familywell.org signs in as a first-party client flagged platform_admin, with exactly
+// admin.onsplan.nl signs in as a first-party client flagged platform_admin, with exactly
 // `board:identity admin`, and only platform admins get a code. Helpers in tests/Pest.php.
 
 function admin(): User
@@ -65,7 +65,7 @@ it('drops admin from tokens of a client that is not a platform admin client', fu
 
     $this->post('/oauth/token', [
         'grant_type' => 'authorization_code', 'client_id' => $client->getKey(), 'client_secret' => $client->plainSecret,
-        'redirect_uri' => 'https://familywell.org/api/auth/callback', 'code' => $params['code'], 'code_verifier' => $verifier,
+        'redirect_uri' => 'https://onsplan.nl/api/auth/callback', 'code' => $params['code'], 'code_verifier' => $verifier,
     ])->assertOk();
 
     expect(Token::query()->latest('created_at')->first()->scopes)->not->toContain('admin');

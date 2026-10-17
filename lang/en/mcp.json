@@ -1,6 +1,6 @@
 {
     "consent_head": "Connect an app",
-    "consent_title": "Connect :app to Familywell",
+    "consent_title": "Connect :app to onsplan",
     "consent_desc": "Choose one family and what this app may see or change. You can disconnect it anytime in Settings.",
     "family": "Family",
     "what_it_can_do": "Access to :family",
@@ -13,8 +13,8 @@
     "no_family": "You need to be in a family before you can connect an app.",
     "allow": "Allow",
     "connected_apps": "Connected apps",
-    "connected_apps_desc": "AI assistants and other apps you've connected to Familywell.",
-    "connected_none": "No apps connected yet. Add Familywell to Claude, ChatGPT or another assistant using the address below.",
+    "connected_apps_desc": "AI assistants and other apps you've connected to onsplan.",
+    "connected_none": "No apps connected yet. Add onsplan to Claude, ChatGPT or another assistant using the address below.",
     "server_url": "MCP server address",
     "connected_on": "Connected :date",
     "expires_on": "Stays connected until :date unless used",

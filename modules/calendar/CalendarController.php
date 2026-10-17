@@ -17,6 +17,7 @@ use Modules\Contacts\Person;
 use Modules\Projects\Project;
 use Modules\Tasks\Mcp\TaskData;
 use Modules\Tasks\Task;
+use Modules\Calendar\CalendarSyncService;
 
 class CalendarController extends Controller
 {
@@ -55,7 +56,8 @@ class CalendarController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        CalendarEvent::createFor($request->user(), CalendarEvent::validated($request->all()));
+        $event = CalendarEvent::createFor($request->user(), CalendarEvent::validated($request->all()));
+        app(CalendarSyncService::class)->pushEvent($event);
 
         return back();
     }
@@ -85,6 +87,7 @@ class CalendarController extends Controller
     {
         abort_unless($this->access->canEdit($request->user(), $event), 403);
         $event->applyUpdate($request->only([...CalendarEvent::COLUMNS, 'people', 'project_id']));
+        app(CalendarSyncService::class)->pushEvent($event->fresh());
 
         return back();
     }
@@ -92,6 +95,7 @@ class CalendarController extends Controller
     public function destroy(Request $request, CalendarEvent $event): RedirectResponse
     {
         abort_unless($event->created_by === $request->user()->id, 403); // creator only, like notes/recipes
+        app(CalendarSyncService::class)->deleteEvent($event);
         $event->delete(); // trash; its to-dos go with it (CalendarEvent::booted)
 
         return to_route('calendar.index');

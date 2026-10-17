@@ -32,7 +32,7 @@ class McpFamilyContext
 
         // Same paywall as the web app (RequireFamily): connectors stop working when the subscription lapses.
         if (Billing::enabled() && ! Billing::hasAccess(Family::findOrFail($familyId))) {
-            return response()->json(['error' => 'This family has no active FamilyWell subscription. Subscribe in Settings > Billing.'], 402);
+            return response()->json(['error' => 'This family has no active onsplan subscription. Subscribe in Settings > Billing.'], 402);
         }
 
         CurrentFamily::set($familyId);

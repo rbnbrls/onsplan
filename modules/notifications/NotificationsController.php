@@ -20,7 +20,7 @@ class NotificationsController extends Controller
 
         return [
             'id' => $n->id,
-            'title' => $d['title'] ?? 'FamilyWell',
+            'title' => $d['title'] ?? 'onsplan',
             'body' => $d['body'] ?? '',
             'url' => $d['url'] ?? '/dashboard',
             'category' => $d['category'] ?? null,

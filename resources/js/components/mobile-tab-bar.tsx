@@ -73,7 +73,7 @@ const CREATE: Item[] = [
     { key: 'vehicles', labelKey: 'create.vehicles', url: '/m/vehicles/new', icon: Car },
 ];
 
-const PINS_KEY = 'familywell:navPins';
+const PINS_KEY = 'onsplan:navPins';
 const MAX_PINS = 4;
 // Default pins: this preferred order, intersected with what's actually available, first four.
 const DEFAULT_ORDER = ['dashboard', 'projects', 'shopping', 'spending', 'members', 'modules', 'settings'];

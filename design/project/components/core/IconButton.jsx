@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell IconButton — a square/circular button holding a single icon.
+ * onsplan IconButton — a square/circular button holding a single icon.
  * Mirrors the icon-well treatment (accent-subtle round wells, bordered
  * surface squares) used in the top nav and quick-action rows.
  */

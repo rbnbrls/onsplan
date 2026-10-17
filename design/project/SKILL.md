@@ -1,6 +1,6 @@
 ---
-name: familywell-design
-description: Use this skill to generate well-branded interfaces and assets for FamilyWell, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
+name: onsplan-design
+description: Use this skill to generate well-branded interfaces and assets for onsplan, either for production or throwaway prototypes/mocks/etc. Contains essential design guidelines, colors, type, fonts, assets, and UI kit components for prototyping.
 user-invocable: true
 ---
 

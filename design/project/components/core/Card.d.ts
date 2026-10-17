@@ -13,7 +13,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Surface panel — the white card used across FamilyWell.
+ * Surface panel — the white card used across onsplan.
  * @startingPoint section="Core" subtitle="White surface panel, optional accent bar" viewport="700x200"
  */
 export function Card(props: CardProps): JSX.Element;

@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-// Platform data for admin.familywell.org: accounts and families, never what families store (no notes,
+// Platform data for admin.onsplan.nl: accounts and families, never what families store (no notes,
 // lists, expenses...) and never secrets. Lists: 50 per page, newest first, literal search. Read-only
 // except one write: granting / revoking a family's comped lifetime access (Billing::setLifetime).
 class AdminApiController extends Controller

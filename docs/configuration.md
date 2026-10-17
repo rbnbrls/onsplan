@@ -1,6 +1,6 @@
 # Configuration
 
-FamilyWell is configured entirely through environment variables in `.env`. Start from `.env.example` (`cp .env.example .env`) and fill in what you need. This page documents the variables that matter for running the app; the defaults in `.env.example` are enough to boot a local instance on SQLite.
+onsplan is configured entirely through environment variables in `.env`. Start from `.env.example` (`cp .env.example .env`) and fill in what you need. This page documents the variables that matter for running the app; the defaults in `.env.example` are enough to boot a local instance on SQLite.
 
 > **Secrets never live in the repo.** `.env` and all credential files are git-ignored. In production, set these as your platform's secret env vars (for example, encrypted App Platform variables or Docker secrets), not in a committed file.
 
@@ -8,7 +8,7 @@ FamilyWell is configured entirely through environment variables in `.env`. Start
 
 | Variable | Default | Notes |
 |---|---|---|
-| `APP_NAME` | `FamilyWell` | Shown in the UI and emails. |
+| `APP_NAME` | `onsplan` | Shown in the UI and emails. |
 | `APP_ENV` | `local` | `production` in production. |
 | `APP_KEY` | none | **Required.** Generate with `php artisan key:generate`. |
 | `APP_DEBUG` | `true` | Set to `false` in production. |

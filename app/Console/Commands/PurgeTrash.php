@@ -5,7 +5,7 @@ namespace App\Console\Commands;
 use App\Support\Trash\Trash;
 use Illuminate\Console\Command;
 
-// Force-deletes trashed rows older than config('familywell.trash_days'). Scheduled daily (routes/console.php).
+// Force-deletes trashed rows older than config('onsplan.trash_days'). Scheduled daily (routes/console.php).
 // Resumable by construction: each run only looks at what is still in the trash past the cutoff, so a
 // crash mid-way just leaves the rest for the next run. Runs without a tenant (no CurrentFamily in the
 // scheduler), so it covers every family. forceDelete() per model, not a bulk delete, so model events

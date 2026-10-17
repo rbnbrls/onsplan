@@ -1,4 +1,4 @@
-# Contributing to FamilyWell
+# Contributing to onsplan
 
 Thanks for helping out! Bug fixes, new modules, translations and documentation improvements are all welcome. Please read [License and contribution terms](#license-and-contribution-terms) before opening a pull request.
 
@@ -54,12 +54,12 @@ New features usually belong in a module rather than the core. See **[docs/module
 
 ## License and contribution terms
 
-FamilyWell is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE).
+onsplan is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE).
 
 By opening a pull request or otherwise submitting a contribution, you agree that:
 
 1. You wrote it, or otherwise have the right to submit it.
-2. You grant the maintainer (Bogdan Dragomir) a perpetual, worldwide, irrevocable, royalty-free license to use, modify, distribute and sublicense your contribution under any terms, including commercially. This lets the hosted service at familywell.co keep running and the project's license change in the future.
+2. You grant the maintainer (Bogdan Dragomir) a perpetual, worldwide, irrevocable, royalty-free license to use, modify, distribute and sublicense your contribution under any terms, including commercially. This lets the hosted service at onsplan.nl keep running and the project's license change in the future.
 3. Your contribution is also available to everyone else under the project's current license.
 
 If you can't agree to this, please open an issue describing the change instead of a pull request.

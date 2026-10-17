@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use App\Http\Controllers\Settings\MicrosoftCalendarController;
 use Modules\Contacts\Person;
 use Modules\Tasks\Task;
 
@@ -153,6 +154,9 @@ class CalendarServiceProvider extends ServiceProvider
             ->get('/calendar/feed/{token}.ics', [CalendarFeedController::class, 'show'])
             ->where('token', '[A-Za-z0-9]+')
             ->name('calendar.feed');
+
+        Route::match(['get', 'post'], '/integrations/microsoft/calendar/webhook', [MicrosoftCalendarController::class, 'webhook'])
+            ->name('calendar.microsoft.webhook');
     }
 
     // Self-gate for listeners/providers: providers boot for every family (rule 2 of the hooks pattern).

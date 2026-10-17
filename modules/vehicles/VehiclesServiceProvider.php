@@ -131,7 +131,7 @@ class VehiclesServiceProvider extends ServiceProvider
         // not permission gates. Maintenance / repairs / fuel / documents / notifications / dashboard
         // widget arrive in later phases; P1 is Cars + first-class Mileage only.
         // The history PDF behind a signed link, for the MCP tool (the person opens it in a browser with no
-        // Familywell session). The signature authorizes it; the controller checks the module is still on.
+        // onsplan session). The signature authorizes it; the controller checks the module is still on.
         Route::middleware(['web', 'signed', 'throttle:20,1'])
             ->get('/vehicles/history/{vehicle}.pdf', [VehicleExportController::class, 'signed'])
             ->whereNumber('vehicle')

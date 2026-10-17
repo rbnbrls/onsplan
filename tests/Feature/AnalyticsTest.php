@@ -12,7 +12,7 @@ use Illuminate\Support\Str;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\get;
 
-// Per-user analytics (hosted familywell.co only): users.analytics_id + first_touch, the familywell.org
+// Per-user analytics (hosted onsplan.nl only): users.analytics_id + first_touch, the onsplan.nl
 // hand-off (CaptureFirstTouch), adoption at sign-up, the identify prop and server-side Umami events.
 // Social sign-up adoption is in Auth/SocialLoginTest.php, subscriptions in Billing/PaywallTest.php.
 
@@ -45,9 +45,9 @@ it('backfills existing users when the migration runs', function () {
         ->and($ids->unique())->toHaveCount(3);
 });
 
-// ---------------------------------------------------------------- hand-off from familywell.org
+// ---------------------------------------------------------------- hand-off from onsplan.nl
 
-it('keeps the familywell.org visitor id and first touch for a guest, first one wins', function () {
+it('keeps the onsplan.nl visitor id and first touch for a guest, first one wins', function () {
     umamiOn();
     $vid = (string) Str::uuid();
 
@@ -105,13 +105,13 @@ it('stores the route template, never a token from the landing URL', function () 
 it('adopts the visitor id and first touch on password sign-up', function () {
     $events = umamiOn();
     $vid = (string) Str::uuid();
-    get("/register?fw_vid={$vid}&fw_src=familywell.org&fw_med=referral&fw_cmp=launch")->assertOk();
+    get("/register?fw_vid={$vid}&fw_src=onsplan.nl&fw_med=referral&fw_cmp=launch")->assertOk();
 
     $this->post('/register', ['name' => 'Ana', 'email' => 'ana@example.com', 'password' => 'password', 'password_confirmation' => 'password']);
 
     $user = User::where('email', 'ana@example.com')->sole();
     expect($user->analytics_id)->toBe($vid)
-        ->and($user->first_touch)->toMatchArray(['source' => 'familywell.org', 'medium' => 'referral', 'campaign' => 'launch'])
+        ->and($user->first_touch)->toMatchArray(['source' => 'onsplan.nl', 'medium' => 'referral', 'campaign' => 'launch'])
         ->and(session('analytics'))->toBeNull()
         ->and($events())->toBe([['signed_up', ['method' => 'password'], $vid, '/register']]);
 });
@@ -120,14 +120,14 @@ it('refuses a visitor id another account already has', function () {
     umamiOn();
     $vid = (string) Str::uuid();
     User::factory()->create()->forceFill(['analytics_id' => $vid])->save();
-    get("/register?fw_vid={$vid}&fw_src=familywell.org")->assertOk();
+    get("/register?fw_vid={$vid}&fw_src=onsplan.nl")->assertOk();
 
     $this->post('/register', ['name' => 'Ana', 'email' => 'ana@example.com', 'password' => 'password', 'password_confirmation' => 'password']);
 
     $user = User::where('email', 'ana@example.com')->sole();
     expect($user->analytics_id)->not->toBe($vid)
         ->and(Str::isUuid($user->analytics_id))->toBeTrue()
-        ->and($user->first_touch['source'])->toBe('familywell.org');
+        ->and($user->first_touch['source'])->toBe('onsplan.nl');
 });
 
 it('queues signup_completed for the browser through the redirects, sent once', function () {
@@ -167,16 +167,16 @@ it('shares analyticsId only when Umami is configured and someone is signed in', 
 
 it('posts an event to Umami\'s collect API under the user\'s analytics id', function () {
     umamiOn();
-    config(['app.url' => 'https://familywell.co']);
+    config(['app.url' => 'https://onsplan.nl']);
 
     Analytics::send('11111111-2222-3333-4444-555555555555', 'family_created', ['n' => 1], '/onboarding');
 
     Http::assertSent(fn (HttpRequest $r) => $r->url() === 'https://analytics.dragonpie.co/api/send'
         && $r->method() === 'POST'
-        && $r->hasHeader('User-Agent', 'FamilyWell/1.0 (+https://familywell.co)')
+        && $r->hasHeader('User-Agent', 'onsplan/1.0 (+https://onsplan.nl)')
         // `data` goes out as a JSON object even when empty (Umami rejects an array), so compare it decoded.
         && json_decode($r->body(), true) === ['type' => 'event', 'payload' => [
-            'website' => 'site-123', 'hostname' => 'familywell.co', 'url' => '/onboarding', 'name' => 'family_created',
+            'website' => 'site-123', 'hostname' => 'onsplan.nl', 'url' => '/onboarding', 'name' => 'family_created',
             'data' => ['n' => 1], 'id' => '11111111-2222-3333-4444-555555555555',
         ]]);
 });

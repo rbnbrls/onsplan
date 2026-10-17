@@ -1,4 +1,4 @@
-# FamilyWell
+# onsplan
 
 ## UI: definition of done
 
@@ -13,4 +13,4 @@ Every page must be flawless at phone AND desktop width. UI work is not done unti
 
 ## Analytics
 
-familywell.org and familywell.co report into ONE Umami website (since 2026-10-16) so a click-through is one visit, not an .org bounce + a new .co visitor; split reports by hostname. The old .co website stays read-only for its history. Funnel steps go from the browser (`resources/js/lib/analytics.ts`, or `Analytics::queue()` for a step that ends in a redirect); server-side `Analytics::track()` lands in a different Umami session. Why, the evidence and the event list: `docs/analytics.md`.
+onsplan.nl and onsplan.nl report into ONE Umami website (since 2026-10-16) so a click-through is one visit, not an .org bounce + a new .co visitor; split reports by hostname. The old .co website stays read-only for its history. Funnel steps go from the browser (`resources/js/lib/analytics.ts`, or `Analytics::queue()` for a step that ends in a redirect); server-side `Analytics::track()` lands in a different Umami session. Why, the evidence and the event list: `docs/analytics.md`.

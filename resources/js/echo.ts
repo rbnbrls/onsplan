@@ -5,8 +5,8 @@ declare global {
     interface Window {
         Pusher: typeof Pusher;
         Echo?: Echo<'reverb'>;
-        __familywellReverb?: { key: string; host: string; port: number; scheme: string };
-        __familywellFamilyId?: number;
+        __onsplanReverb?: { key: string; host: string; port: number; scheme: string };
+        __onsplanFamilyId?: number;
     }
 }
 
@@ -14,7 +14,7 @@ window.Pusher = Pusher;
 
 // Reverb connection is injected at runtime (server env -> window), not baked into the bundle,
 // so the same build works on any host/deployment.
-const cfg = window.__familywellReverb;
+const cfg = window.__onsplanReverb;
 if (cfg && cfg.key) {
     window.Echo = new Echo({
         broadcaster: 'reverb',

@@ -59,7 +59,7 @@ class RegisteredUserController extends Controller
         self::adoptAnalytics($request, $user);
         Analytics::track($user, 'signed_up', ['method' => $method], '/register');
         // signed_up (server) is the reliable count; signup_completed (browser) is the same step inside the
-        // visitor's own Umami visit, so the familywell.org -> sign-up funnel can follow it.
+        // visitor's own Umami visit, so the onsplan.nl -> sign-up funnel can follow it.
         Analytics::queue('signup_completed', ['method' => $method]);
 
         event(new Registered($user));
@@ -79,7 +79,7 @@ class RegisteredUserController extends Controller
 
     /**
      * Move what CaptureFirstTouch kept for this guest onto their new account, then forget it. The
-     * familywell.org visitor id becomes their analytics_id (so their pre-signup visits are the same person
+     * onsplan.nl visitor id becomes their analytics_id (so their pre-signup visits are the same person
      * in Umami), unless another account already has it: e.g. a second sign-up from the same browser keeps
      * its own fresh id instead of merging two people into one.
      */

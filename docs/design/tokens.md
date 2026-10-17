@@ -1,12 +1,12 @@
-# Familywell Design Tokens
+# onsplan Design Tokens
 
-Source of truth for the brand: [`familywell.pen`](./familywell.pen) (Pen "Brand Identity Board").
+Source of truth for the brand: [`onsplan.pen`](./onsplan.pen) (Pen "Brand Identity Board").
 These tokens are implemented as the default theme in the P1 plan (`resources/themes/default/theme.json`)
 and surfaced at runtime as CSS custom properties. See spec §5 (Theming).
 
 ## Brand
 
-- **Wordmark:** FamilyWell
+- **Wordmark:** onsplan
 - **Logomark:** leaf (lucide `leaf`), accent fill, full radius
 - **Tagline:** "Your family, beautifully organized."
 - **Feel:** calm, natural, wellness. Cream + sage/forest green.

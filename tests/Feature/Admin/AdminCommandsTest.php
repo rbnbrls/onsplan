@@ -28,9 +28,9 @@ it('cannot be mass-assigned', function () {
 
 it('registers an admin client with --admin', function () {
     mcpKeys();
-    $this->artisan('board:client', ['name' => 'FamilyWell admin', 'redirect' => 'https://admin.familywell.org/auth/callback', '--admin' => true])->assertSuccessful();
+    $this->artisan('board:client', ['name' => 'onsplan admin', 'redirect' => 'https://admin.onsplan.nl/auth/callback', '--admin' => true])->assertSuccessful();
 
-    $client = OAuthClient::query()->where('name', 'FamilyWell admin')->firstOrFail();
+    $client = OAuthClient::query()->where('name', 'onsplan admin')->firstOrFail();
     expect($client->first_party)->toBeTrue()
         ->and($client->platform_admin)->toBeTrue()
         ->and(OAuthClient::isPlatformAdminClient($client->getKey()))->toBeTrue()

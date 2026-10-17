@@ -7,12 +7,12 @@ use App\Support\Billing\Billing;
 use Illuminate\Console\Command;
 
 // Grant / revoke a family's comped lifetime access from the console. Same write path as the
-// admin.familywell.org toggle (Billing::setLifetime), so both log and behave identically.
+// admin.onsplan.nl toggle (Billing::setLifetime), so both log and behave identically.
 class FamilyLifetime extends Command
 {
     protected $signature = 'family:lifetime {family : The family id} {--revoke : Take lifetime access away}';
 
-    protected $description = 'Grant (or --revoke) a family lifetime FamilyWell access (comped / VIP)';
+    protected $description = 'Grant (or --revoke) a family lifetime onsplan access (comped / VIP)';
 
     public function handle(): int
     {

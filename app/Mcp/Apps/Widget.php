@@ -20,7 +20,7 @@ use Laravel\Mcp\Server\Ui\Csp;
  * The widget renders the tool result it is pushed and changes things only by calling our existing write
  * tools through the host, so scopes, sharing rules, notifications and realtime are exactly the MCP ones.
  *
- * ponytail: one class instantiated per widget (FamilywellServer::boot) instead of a class per widget;
+ * ponytail: one class instantiated per widget (OnsplanServer::boot) instead of a class per widget;
  * each instance is a plain listed resource, which every host handles (templates are less supported).
  */
 class Widget extends AppResource
@@ -45,7 +45,7 @@ class Widget extends AppResource
     public const FULLSCREEN = ['shopping', 'recipe'];
 
     /**
-     * Widgets that show images from Familywell (signed photo URLs). Only these get an img-src for our own
+     * Widgets that show images from onsplan (signed photo URLs). Only these get an img-src for our own
      * origin in their CSP; every other widget keeps the no-external-resources default.
      */
     public const IMAGES = ['recipe'];
@@ -56,8 +56,8 @@ class Widget extends AppResource
     public function __construct(public readonly string $widget)
     {
         $this->uri = self::uriFor($widget);
-        $this->name = "familywell-{$widget}";
-        $this->title = 'Familywell '.$widget;
+        $this->name = "onsplan-{$widget}";
+        $this->title = 'onsplan '.$widget;
         $this->description = self::WIDGETS[$widget];
     }
 
@@ -68,7 +68,7 @@ class Widget extends AppResource
      */
     public static function uriFor(string $widget): string
     {
-        return "ui://familywell/{$widget}";
+        return "ui://onsplan/{$widget}";
     }
 
     public function handle(Request $request): Response
@@ -78,7 +78,7 @@ class Widget extends AppResource
         return Response::view('mcp-app', [
             'title' => $this->title,
             'sdk' => self::sdk(in_array($this->widget, self::FULLSCREEN, true) ? ['inline', 'fullscreen'] : []),
-            // The person's Familywell skin, same resolution as the web app. The page is read with their
+            // The person's onsplan skin, same resolution as the web app. The page is read with their
             // token (McpFamilyContext has set the family), so this is their colours, not a shared default.
             'themeCss' => ThemeTokens::css(ThemeTokens::resolve(auth()->user(), CurrentFamily::id())),
             'css' => $read('core.css'),
@@ -123,7 +123,7 @@ class Widget extends AppResource
     }
 
     /**
-     * Photos are served by this app (signed URLs built on the request's host, mcp.familywell.co for MCP
+     * Photos are served by this app (signed URLs built on the request's host, mcp.onsplan.nl for MCP
      * calls): allow both that host and the main app URL, nothing else. Empty for widgets without images.
      *
      * @return list<string>

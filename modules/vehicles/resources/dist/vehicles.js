@@ -5,7 +5,7 @@
 // nothing while loading, when the module is off (the feed 404s), or when NO car needs attention (the
 // server omits healthy cars) — so a healthy fleet adds no clutter to the dashboard. Mirrors the
 // Inventory / Birthdays widgets.
-const { React, registerSlot } = window.Familywell;
+const { React, registerSlot } = window.onsplan;
 const h = React.createElement;
 
 // Icon glyph + colour token per exception kind. Colours track the app's state tokens (amber warning,

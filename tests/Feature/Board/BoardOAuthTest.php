@@ -8,7 +8,7 @@ use Laravel\Passport\AuthCode;
 
 use function Pest\Laravel\actingAs;
 
-// The module-requests board (familywell.org) signs people in through our OAuth server as a first-party
+// The module-requests board (onsplan.nl) signs people in through our OAuth server as a first-party
 // client: no consent screen, and only for the `board:identity` scope (the `first_party` flag on the client row).
 // Helpers boardClient() / boardAuthorizeQuery() live in tests/Pest.php.
 
@@ -19,7 +19,7 @@ it('skips consent for a board client asking only for board:identity', function (
 
     $location = actingAs($user)->get("/oauth/authorize?{$query}")->assertRedirect()->headers->get('Location');
 
-    expect($location)->toStartWith('https://familywell.org/api/auth/callback?')
+    expect($location)->toStartWith('https://onsplan.nl/api/auth/callback?')
         ->and($location)->toContain('code=')
         ->and($location)->toContain('state=xyz');
 });
@@ -93,19 +93,19 @@ it('never skips consent for a client that is not a board client', function () {
 
 it('creates a board client from the command', function () {
     mcpKeys();
-    $this->artisan('board:client', ['name' => 'FamilyWell board', 'redirect' => 'https://familywell.org/api/auth/callback'])
+    $this->artisan('board:client', ['name' => 'onsplan board', 'redirect' => 'https://onsplan.nl/api/auth/callback'])
         ->expectsOutputToContain('Client ID:')
         ->expectsOutputToContain('Client secret:')
         ->assertExitCode(0);
 
-    $client = OAuthClient::where('name', 'FamilyWell board')->first();
-    expect($client->redirect_uris)->toBe(['https://familywell.org/api/auth/callback'])
+    $client = OAuthClient::where('name', 'onsplan board')->first();
+    expect($client->redirect_uris)->toBe(['https://onsplan.nl/api/auth/callback'])
         ->and($client->first_party)->toBeTrue();
 });
 
 it('refuses a non-https redirect in the command', function () {
     mcpKeys();
-    $this->artisan('board:client', ['name' => 'FamilyWell board', 'redirect' => 'http://familywell.org/cb'])
+    $this->artisan('board:client', ['name' => 'onsplan board', 'redirect' => 'http://onsplan.nl/cb'])
         ->assertExitCode(1);
 
     expect(OAuthClient::count())->toBe(0);

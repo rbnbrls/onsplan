@@ -14,7 +14,7 @@ use Laravel\Mcp\Response;
 use Laravel\Mcp\Server\Tool as BaseTool;
 
 /**
- * Base for every Familywell MCP tool. A tool belongs to one module and needs either read or write
+ * Base for every onsplan MCP tool. A tool belongs to one module and needs either read or write
  * access to it. shouldRegister() is the ONE permission gate: laravel/mcp only lists and only calls tools
  * whose shouldRegister() is true for the current request (an unlisted name is "tool not found"), so a
  * tool's handle() never re-checks scopes. It does still apply the per-entity sharing rules (a private

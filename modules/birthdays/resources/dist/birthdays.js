@@ -3,7 +3,7 @@
 //   - person.editor.fields : a day/month (+ optional year) birthday field in the contact editor
 //   - person.row.badges    : a 🎂 badge (age + how soon) on the contact row
 //   - dashboard.widgets    : an "Upcoming birthdays" card that fetches /m/birthdays/upcoming
-const { React, registerSlot, Picker } = window.Familywell;
+const { React, registerSlot, Picker } = window.onsplan;
 const h = React.createElement;
 
 // Editor field: day + month, year optional (age only shows once a year is known). Persists via
@@ -25,7 +25,7 @@ function BirthdateField(props) {
     }
 
     // h-[42px] lines the day/year inputs up with the month Picker (the app's shared dropdown, exposed on
-    // window.Familywell); the row aligns to the top so they stay put while the month list is open.
+    // window.onsplan); the row aligns to the top so they stay put while the month list is open.
     const cls = 'border-border text-primary h-[42px] rounded-lg border bg-transparent px-2 text-base md:text-sm';
     return h(
         'div',

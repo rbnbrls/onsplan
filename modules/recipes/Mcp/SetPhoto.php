@@ -21,7 +21,7 @@ class SetPhoto extends Tool
 
     protected string $name = 'recipes_set_photo';
 
-    protected string $description = 'Set or replace a recipe\'s photo (JPEG, PNG or WebP, up to 12 MB): in ChatGPT the image the person attached (`file`); elsewhere a public https image URL (`file_url`) or `file_base64` + `file_name`. Claude cannot pass an image attached in the chat: give the person the recipe link to add it in Familywell instead.';
+    protected string $description = 'Set or replace a recipe\'s photo (JPEG, PNG or WebP, up to 12 MB): in ChatGPT the image the person attached (`file`); elsewhere a public https image URL (`file_url`) or `file_base64` + `file_name`. Claude cannot pass an image attached in the chat: give the person the recipe link to add it in onsplan instead.';
 
     public function __construct()
     {

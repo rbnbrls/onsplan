@@ -31,16 +31,16 @@ import { registerServiceWorker } from './lib/push';
 declare global {
     const route: typeof routeFn;
     interface Window {
-        Familywell: { React: typeof React; registerSlot: typeof registerSlot; Picker: typeof Picker };
-        __familywellModules?: string[];
+        onsplan: { React: typeof React; registerSlot: typeof registerSlot; Picker: typeof Picker };
+        __onsplanModules?: string[];
     }
 }
 
 // Expose the shell runtime so pre-built module assets register UI without a bundler or a second React.
 // Picker is exposed so prebuilt module frontends (modules/*/resources/dist) use the app's one dropdown
 // instead of a native <select> (they can't import from the app bundle).
-window.Familywell = { React, registerSlot, Picker };
-void loadModules(window.__familywellModules ?? []);
+window.onsplan = { React, registerSlot, Picker };
+void loadModules(window.__onsplanModules ?? []);
 
 // Catch stale-chunk failures after a deploy and auto-reload once, so an installed PWA never gets
 // stuck on a blank white screen.

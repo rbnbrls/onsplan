@@ -29,9 +29,9 @@ class IncomingFile
     public const FILE_PARAMS_META = ['openai/fileParams' => ['file']];
 
     /** What a model is told when it passed a `file` we can't read (see from()). */
-    public const UNREADABLE = 'The attached file did not come through: only ChatGPT can hand a chat attachment to Familywell (as `file`). '
+    public const UNREADABLE = 'The attached file did not come through: only ChatGPT can hand a chat attachment to onsplan (as `file`). '
         .'Pass the image as file_url (a public https link) or file_base64 + file_name instead. If you have neither, '
-        .'save without it and give the person the Familywell link (`url`) to add the file there.';
+        .'save without it and give the person the onsplan link (`url`) to add the file there.';
 
     /** Sniffed MIME => extension, the document/receipt types the app already accepts. */
     public const DOCUMENTS = [

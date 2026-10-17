@@ -8,7 +8,7 @@
                 <tr><td>
                     <p style="font-size:24px; font-weight:600; color:#1B3A28; margin:0 0 8px;">You're invited</p>
                     <p style="font-size:15px; color:#4A6B52; line-height:1.6; margin:0 0 24px;">
-                        {{ $inviter }} has invited you to join <strong>{{ $familyName }}</strong> on Familywell &mdash;
+                        {{ $inviter }} has invited you to join <strong>{{ $familyName }}</strong> on onsplan &mdash;
                         a calm, shared space for your family's plans, lists, and everyday moments.
                     </p>
                     <a href="{{ $acceptUrl }}"

@@ -13,8 +13,8 @@ export default function AuthSimpleLayout({ children, title, description }: AuthL
             <div className="w-full max-w-sm">
                 <div className="flex flex-col gap-8">
                     <div className="flex flex-col items-center gap-4">
-                        {/* The logo leads to the public site (familywell.org): the app root only bounces guests back here. */}
-                        <a href="https://familywell.org" className="flex flex-col items-center gap-2 font-medium">
+                        {/* The logo leads to the public site (onsplan.nl): the app root only bounces guests back here. */}
+                        <a href="https://onsplan.nl" className="flex flex-col items-center gap-2 font-medium">
                             <div className="mb-1 flex h-9 w-9 items-center justify-center rounded-md">
                                 <AppLogoIcon className="size-9 fill-current text-[var(--foreground)] dark:text-white" />
                             </div>

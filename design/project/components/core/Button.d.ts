@@ -18,7 +18,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 }
 
 /**
- * Primary call-to-action button in the FamilyWell UI.
+ * Primary call-to-action button in the onsplan UI.
  * @startingPoint section="Core" subtitle="Accent, secondary, ghost & danger buttons" viewport="700x200"
  */
 export function Button(props: ButtonProps): JSX.Element;

@@ -63,10 +63,11 @@
         "password": "Password",
         "appearance": "Appearance",
         "language": "Language",
-        "language_desc": "Choose the language you'd like to use across FamilyWell.",
+        "language_desc": "Choose the language you'd like to use across onsplan.",
         "notifications": "Notifications",
         "manage": "Manage your profile and account settings",
         "media": "Media"
+        ,"calendar": "Calendar"
     },
     "create": {
         "title": "Add",

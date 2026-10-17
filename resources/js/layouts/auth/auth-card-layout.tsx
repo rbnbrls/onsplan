@@ -14,8 +14,8 @@ export default function AuthCardLayout({
     return (
         <div className="bg-muted flex min-h-svh flex-col items-center justify-center gap-6 p-6 md:p-10">
             <div className="flex w-full max-w-md flex-col gap-6">
-                {/* The logo leads to the public site (familywell.org): the app root only bounces guests back here. */}
-                <a href="https://familywell.org" className="flex items-center gap-2 self-center font-medium">
+                {/* The logo leads to the public site (onsplan.nl): the app root only bounces guests back here. */}
+                <a href="https://onsplan.nl" className="flex items-center gap-2 self-center font-medium">
                     <div className="flex h-9 w-9 items-center justify-center">
                         <AppLogoIcon className="size-9 fill-current text-black dark:text-white" />
                     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 
 /**
- * FamilyWell Checkbox — 22px rounded (radius-sm) box. Unchecked = bordered,
+ * onsplan Checkbox — 22px rounded (radius-sm) box. Unchecked = bordered,
  * checked = accent fill with white tick. Matches the task-list rows.
  */
 export function Checkbox({

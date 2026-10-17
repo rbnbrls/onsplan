@@ -28,11 +28,11 @@ export default function PublicEvent({ event, categories, spends }: Props) {
     const catText = (key: string) => catMap[key]?.name ?? key.charAt(0).toUpperCase() + key.slice(1);
     return (
         <div className="bg-background min-h-screen">
-            <Head title={`${event.name} · FamilyWell`} />
+            <Head title={`${event.name} · onsplan`} />
             <div className="mx-auto flex w-full max-w-2xl flex-col gap-4 p-4">
                 <div className="flex items-center gap-2 pt-2">
                     <span className="bg-tile text-tile-foreground flex size-7 items-center justify-center rounded-lg text-xs font-bold">FW</span>
-                    <span className="text-muted-foreground text-sm">FamilyWell · shared with you</span>
+                    <span className="text-muted-foreground text-sm">onsplan · shared with you</span>
                 </div>
 
                 <div className="bg-surface-dark text-text-inverse rounded-2xl p-5">
@@ -70,7 +70,7 @@ export default function PublicEvent({ event, categories, spends }: Props) {
                     ))}
                 </section>
 
-                <p className="text-muted-foreground py-4 text-center text-xs">This is a read-only view shared from FamilyWell.</p>
+                <p className="text-muted-foreground py-4 text-center text-xs">This is a read-only view shared from onsplan.</p>
             </div>
         </div>
     );

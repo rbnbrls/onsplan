@@ -134,7 +134,7 @@ export const VOICE_LANGS = [
     { code: 'ro-RO', label: 'Română' },
     { code: 'en-US', label: 'English' },
 ];
-const VOICE_LANG_KEY = 'familywell:voiceLang';
+const VOICE_LANG_KEY = 'onsplan:voiceLang';
 export const getVoiceLang = (): string => (typeof window === 'undefined' ? 'ro-RO' : localStorage.getItem(VOICE_LANG_KEY) || 'ro-RO');
 export const setVoiceLang = (code: string): void => {
     try {

@@ -6,7 +6,7 @@ A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported t
 
 ## What you should do — IMPORTANT
 
-**Find the primary design file under `familywell-design-system/project/` and read it top to bottom.** Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+**Find the primary design file under `onsplan-design-system/project/` and read it top to bottom.** Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
 
 **If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
 
@@ -18,5 +18,5 @@ The design medium is **HTML/CSS/JS** — these are prototypes, not production co
 
 ## Bundle contents
 
-- `familywell-design-system/README.md` — this file
-- `familywell-design-system/project/` — the `FamilyWell Design System` project files (HTML prototypes, assets, components)
+- `onsplan-design-system/README.md` — this file
+- `onsplan-design-system/project/` — the `onsplan Design System` project files (HTML prototypes, assets, components)

@@ -5,7 +5,7 @@ use App\Models\OAuthClient;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-// admin.familywell.org's read-only API. Every call: a token with `admin`, from the platform-admin client,
+// admin.onsplan.nl's read-only API. Every call: a token with `admin`, from the platform-admin client,
 // for a user who is a platform admin right now.
 
 function adminApiToken(?User $user = null): string

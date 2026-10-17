@@ -27,7 +27,7 @@ class RecipeData
         return $recipe && app(ShareAccess::class)->roleFor($user, $recipe) !== null ? $recipe : null;
     }
 
-    /** Short shape for lists. Photos are signed URLs: the widget's sandbox has no Familywell session. */
+    /** Short shape for lists. Photos are signed URLs: the widget's sandbox has no onsplan session. */
     public static function summary(Recipe $r): array
     {
         return [

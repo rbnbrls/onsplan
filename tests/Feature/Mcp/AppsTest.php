@@ -68,8 +68,8 @@ it('declares the CSP in ChatGPT\'s own key too', function () {
 it('keeps widget URIs permanent, since hosts cache the tool list from connect time', function () {
     // ChatGPT keeps the resourceUri it saw when the person connected and fetches that URI on every render;
     // renaming a URI makes every existing connection fail with "Failed to fetch template".
-    expect(Widget::uriFor('recipe'))->toBe('ui://familywell/recipe')
-        ->and(Widget::uriFor('tasks'))->toBe('ui://familywell/tasks');
+    expect(Widget::uriFor('recipe'))->toBe('ui://onsplan/recipe')
+        ->and(Widget::uriFor('tasks'))->toBe('ui://onsplan/tasks');
 });
 
 it('sends no ui.domain, so every host uses its own default sandbox', function () {
@@ -99,7 +99,7 @@ it('declares full screen to the host only for widgets that offer it', function (
         ->and($html('tasks'))->not->toContain('availableDisplayModes":[');
 });
 
-it('paints widgets in the person\'s Familywell skin', function () {
+it('paints widgets in the person\'s onsplan skin', function () {
     [$family, $users] = mcpFamily([], 2);
     $users[1]->update(['theme' => 'default']); // personal skin: Warm
     $html = function ($user) use ($family) {

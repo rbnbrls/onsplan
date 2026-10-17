@@ -71,6 +71,11 @@ class CalendarEvent extends Model
         return $this->hasMany(CalendarEventLink::class, 'event_id');
     }
 
+    public function syncs(): HasMany
+    {
+        return $this->hasMany(CalendarEventSync::class, 'calendar_event_id');
+    }
+
     /** @return list<int> */
     public function taskIds(): array
     {

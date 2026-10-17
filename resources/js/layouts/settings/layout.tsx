@@ -7,6 +7,7 @@ import { Link, usePage } from '@inertiajs/react';
 
 // key is a translation key resolved at render (so the nav is localized).
 const sidebarNavItems: { key: string; url: string }[] = [
+    { key: 'settings.household', url: '/settings/household' },
     { key: 'settings.profile', url: '/settings/profile' },
     { key: 'settings.password', url: '/settings/password' },
     { key: 'settings.appearance', url: '/settings/appearance' },
@@ -14,6 +15,7 @@ const sidebarNavItems: { key: string; url: string }[] = [
     { key: 'settings.media', url: '/settings/media' },
     { key: 'trash.title', url: '/settings/recently-deleted' },
     { key: 'mcp.connected_apps', url: '/settings/connected-apps' },
+    { key: 'settings.calendar', url: '/settings/calendar' },
     { key: 'billing.title', url: '/settings/billing' },
 ];
 

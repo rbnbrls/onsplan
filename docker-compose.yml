@@ -37,6 +37,20 @@ services:
       DB_USERNAME: familywell
       DB_PASSWORD: familywell
     depends_on: [redis]
+  scheduler:
+    build: .
+    command: php artisan schedule:work --no-interaction
+    env_file: .env
+    environment:
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: familywell
+      DB_USERNAME: familywell
+      DB_PASSWORD: familywell
+      BROADCAST_CONNECTION: log
+      REDIS_HOST: redis
+    depends_on: [db, redis]
   redis:
     image: redis:7-alpine
     ports: ["6379:6379"]

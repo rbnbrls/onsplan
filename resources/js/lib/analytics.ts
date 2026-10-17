@@ -1,4 +1,4 @@
-// Umami in the browser (hosted familywell.co only: the script tag in app.blade.php is rendered only when a
+// Umami in the browser (hosted onsplan.nl only: the script tag in app.blade.php is rendered only when a
 // website id is configured, so on a self-hosted install window.umami never exists and all of this no-ops).
 // Server-side events (sign-up, billing, assistant use) go through App\Support\Analytics instead.
 

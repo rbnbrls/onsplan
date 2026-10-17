@@ -73,7 +73,7 @@ export default function Notifications({ categories }: { categories: Category[] }
                         </div>
                     ) : needsInstall ? (
                         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-800">
-                            On iPhone/iPad, add FamilyWell to your Home Screen first (Share → Add to Home Screen), then open it from there to turn on
+                            On iPhone/iPad, add onsplan to your Home Screen first (Share → Add to Home Screen), then open it from there to turn on
                             notifications.
                         </div>
                     ) : (

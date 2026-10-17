@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 // write per user per 5 minutes: the already-loaded user model is checked first, so a busy session costs no
 // extra query. A plain query-builder UPDATE, so it doesn't touch updated_at or fire model events.
 //
-// Web requests also keep users.country (the admin's "Country"): familywell.co is proxied by Cloudflare
+// Web requests also keep users.country (the admin's "Country"): onsplan.nl is proxied by Cloudflare
 // with IP geolocation on, so every request carries CF-IPCountry. MCP requests come from the assistant's
 // servers (Anthropic / OpenAI), so their country says nothing about the person: web only.
 class TrackLastSeen

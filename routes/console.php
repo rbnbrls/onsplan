@@ -15,6 +15,9 @@ Artisan::command('inspire', function () {
 // See App\Console\Commands\DemoReset.
 Schedule::command('demo:reset')->hourly()->withoutOverlapping();
 
-// Reversible delete: remove items that sat in the trash past config('familywell.trash_days'). Daily, off-peak.
+// Reversible delete: remove items that sat in the trash past config('onsplan.trash_days'). Daily, off-peak.
 // See App\Console\Commands\PurgeTrash and App\Support\Trash\Trash.
 Schedule::command('trash:purge')->dailyAt('03:30')->withoutOverlapping();
+
+Schedule::command('calendar:sync-integrations')->everyTenMinutes()->withoutOverlapping();
+Schedule::command('waste:sync')->dailyAt('02:30')->withoutOverlapping();

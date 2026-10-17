@@ -1,4 +1,4 @@
-/* Shared look for the MCP Apps widgets (App\Mcp\Apps\Widget). Colours come from the person's Familywell
+/* Shared look for the MCP Apps widgets (App\Mcp\Apps\Widget). Colours come from the person's onsplan
    skin: Widget injects that skin's theme.json tokens (ThemeTokens::css, `:root` + `.dark`) and these --fw-*
    names just point at them, the same token roles as the app (--primary = ink/text, --accent-strong = action
    fills). The font is the HOST's (--font-sans, set by the SDK from hostContext) so it sits naturally in the

@@ -16,11 +16,11 @@ beforeEach(function () {
 });
 
 it('serves the discovery documents pointing at the authorization server', function () {
-    config(['mcp.authorization_server' => 'https://familywell.co']);
+    config(['mcp.authorization_server' => 'https://onsplan.nl']);
 
     $this->getJson('/.well-known/oauth-protected-resource/mcp')->assertOk()
         ->assertJsonPath('resource', url('/mcp'))
-        ->assertJsonPath('authorization_servers', ['https://familywell.co']);
+        ->assertJsonPath('authorization_servers', ['https://onsplan.nl']);
 
     $this->getJson('/.well-known/oauth-authorization-server')->assertOk()
         ->assertJsonPath('registration_endpoint', url('oauth/register'))

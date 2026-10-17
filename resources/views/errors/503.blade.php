@@ -1,5 +1,5 @@
 @extends('errors.layout')
 @section('code', 'Down for maintenance')
 @section('title', 'Back shortly')
-@section('message', "We're making Familywell a little better. This takes only a few minutes, please check back soon.")
+@section('message', "We're making onsplan a little better. This takes only a few minutes, please check back soon.")
 @section('cta', 'Try again')

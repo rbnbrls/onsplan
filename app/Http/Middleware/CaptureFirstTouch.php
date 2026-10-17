@@ -9,10 +9,10 @@ use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * Remembers, for a GUEST, who they were on familywell.org and where they came from, until they sign up
+ * Remembers, for a GUEST, who they were on onsplan.nl and where they came from, until they sign up
  * (RegisteredUserController::adoptAnalytics moves it onto the new user, then clears it).
  *
- *   - fw_vid: familywell.org's visitor UUID (its Umami identify id). Adopted as the user's analytics_id so
+ *   - fw_vid: onsplan.nl's visitor UUID (its Umami identify id). Adopted as the user's analytics_id so
  *     marketing-site visits and in-app use are one person in Umami. First one wins.
  *   - first touch: fw_src/fw_med/fw_cmp (the .org's own first touch, so it beats anything seen here), else
  *     utm_* + the Referer, by the same rules as Folio's first-touch.ts: a real source is sticky, a stored

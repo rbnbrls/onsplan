@@ -1,22 +1,22 @@
-# Analytics (hosted familywell.co only)
+# Analytics (hosted onsplan.nl only)
 
 Self-hosted Umami at https://analytics.dragonpie.co, **version 3.3.0** (read from the instance's bundle,
 `CURRENT_VERSION`). Self-hosted installs load no tracker and send nothing: everything is gated on
 `UMAMI_WEBSITE_ID` (see `config/services.php`, `App\Support\Analytics`).
 
-## One website for familywell.org + familywell.co (since 2026-10-16)
+## One website for onsplan.nl + onsplan.nl (since 2026-10-16)
 
 Both domains report into **one** Umami website, `b42f8cb0-3c6b-4e52-9e72-ba81ee80dd88` (it was the
-familywell.org website). Split reports with Umami's **hostname** filter. Production sets
+onsplan.nl website). Split reports with Umami's **hostname** filter. Production sets
 `UMAMI_WEBSITE_ID=b42f8cb0-3c6b-4e52-9e72-ba81ee80dd88` on the DigitalOcean app.
 
-The old familywell.co website, `387d1b2c-f687-44d0-bd91-05b61defa5ec`, is **kept, read-only**: it holds
+The old onsplan.nl website, `387d1b2c-f687-44d0-bd91-05b61defa5ec`, is **kept, read-only**: it holds
 the app's history until the cutover on 2026-10-16 and gets no new data after that. Don't delete it.
-(admin.familywell.org's per-user activity reads both, see familywell-site `admin/src/umami.ts`.)
+(admin.onsplan.nl's per-user activity reads both, see onsplan-site `admin/src/umami.ts`.)
 
 ### Why
 
-With two websites, a visitor who clicked from familywell.org to the app counted as a **bounce** on .org
+With two websites, a visitor who clicked from onsplan.nl to the app counted as a **bounce** on .org
 and as a **new visitor** on .co, so the funnel was invisible. What Umami 3.3.0 does (source,
 `src/app/api/send/route.ts` and `src/queries/sql/getWebsiteStats.ts`, and checked against a throwaway
 3.3.0 in Docker):
@@ -38,14 +38,14 @@ Measured on the throwaway 3.3.0 (same browser, .org page -> CTA click -> .co pag
 | two website ids (the old setup) | no | no |
 
 and bounces: an .org-only visit = bounce; .org + `cta_click` = not a bounce; .org -> .co = not a bounce
-overall, but **is** one with the report filtered to `hostname = familywell.org` (the filter drops the
+overall, but **is** one with the report filtered to `hostname = onsplan.nl` (the filter drops the
 .co page view). That's why the .org CTAs also send `cta_click`: the .org-only view stays honest too.
 
 ### The visitor id hand-off still matters
 
 `umami.identify()` doesn't change the session (it only sets the distinct id), so joining a person
-across devices or months still uses familywell.org's `visitor.js`: it adds `fw_vid` (+ `fw_src/med/cmp`)
-to every link to familywell.co, `CaptureFirstTouch` keeps it for the guest, and sign-up adopts it as
+across devices or months still uses onsplan.nl's `visitor.js`: it adds `fw_vid` (+ `fw_src/med/cmp`)
+to every link to onsplan.nl, `CaptureFirstTouch` keeps it for the guest, and sign-up adopts it as
 `users.analytics_id` (`RegisteredUserController::adoptAnalytics`).
 
 ## Events
@@ -55,11 +55,11 @@ Server-side events (`Analytics::track`, sent from the server's IP) don't: they l
 through the distinct id. So the funnel steps are sent from the browser, and the server-side counts stay
 as the reliable totals.
 
-**familywell.org** (data-umami-event attributes, see familywell-site `docs/analytics.md`):
+**onsplan.nl** (data-umami-event attributes, see onsplan-site `docs/analytics.md`):
 `cta_click` with `location` (nav, mobile_nav, megamenu, hero, features, pricing, final, footer, ...) and
 `label` (get_started, demo, github, copy_install, ...), `video_play`.
 
-**familywell.co, browser** (`resources/js/lib/analytics.ts`):
+**onsplan.nl, browser** (`resources/js/lib/analytics.ts`):
 
 | event | data | where |
 |---|---|---|
@@ -72,9 +72,9 @@ as the reliable totals.
 "Queued" = `Analytics::queue()`: kept in the session, shared to the next rendered page as
 `analyticsEvents`, sent by `app.tsx` (for steps that end in a redirect the browser never renders).
 
-**familywell.co, server** (`Analytics::track`): `signed_up`, `family_created`, `member_invited`,
+**onsplan.nl, server** (`Analytics::track`): `signed_up`, `family_created`, `member_invited`,
 `invite_accepted`, `assistant_connected`, `assistant_tool`, `subscription_started`,
 `subscription_canceled`.
 
-The funnel in Umami: `cta_click` (hostname familywell.org) -> `signup_started` -> `signup_completed`
+The funnel in Umami: `cta_click` (hostname onsplan.nl) -> `signup_started` -> `signup_completed`
 -> `checkout_started` -> `checkout_completed`, with `demo_opened` as the side branch.

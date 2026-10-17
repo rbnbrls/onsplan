@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\URL;
 
 /**
  * "Export history" PDF downloads: the History screen's button (session) and the link the
- * vehicles_export_history MCP tool hands out (signed, for a browser that has no Familywell session).
+ * vehicles_export_history MCP tool hands out (signed, for a browser that has no onsplan session).
  */
 class VehicleExportController
 {

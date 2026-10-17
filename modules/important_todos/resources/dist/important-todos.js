@@ -1,10 +1,10 @@
-// Pre-built module frontend: uses the shell runtime (window.Familywell), no bundler, no second
+// Pre-built module frontend: uses the shell runtime (window.onsplan), no bundler, no second
 // React. It registers into two slots the task edit
 // screen exposes (resources/js/components/tasks/task-tree.tsx):
 //   - task.editor.fields : an "Important" toggle in the edit drawer
 //   - task.row.badges    : a star on important rows
 // Both receive a `ctx` the primitive spreads as props (task, and for the editor an onPatch fn).
-const { React, registerSlot } = window.Familywell;
+const { React, registerSlot } = window.onsplan;
 const h = React.createElement;
 
 // Editor field: a toggle bound to the task's `important` flag. It persists through `onPatch`, which

@@ -1,7 +1,7 @@
 import { SVGAttributes } from 'react';
 
-// Familywell leaf logomark (filled path, works with fill-current styling).
-// Source of truth: familywell-private design/assets/logo/FamilyWell Exports/FamilyWell-Glyph.svg.
+// onsplan leaf logomark (filled path, works with fill-current styling).
+// Source of truth: onsplan-private design/assets/logo/onsplan Exports/onsplan-Glyph.svg.
 // The glyph is 108.68x100.77; the viewBox is padded to a square (y -3.955) so it centres in size-* boxes.
 export default function AppLogoIcon(props: SVGAttributes<SVGElement>) {
     return (

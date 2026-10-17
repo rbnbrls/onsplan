@@ -68,7 +68,7 @@ class Billing
 
     /**
      * Grant or revoke comped lifetime access. The one write path for the flag, shared by the admin API
-     * (admin.familywell.org's toggle) and `php artisan family:lifetime`, and logged for the audit trail.
+     * (admin.onsplan.nl's toggle) and `php artisan family:lifetime`, and logged for the audit trail.
      */
     public static function setLifetime(Family $family, bool $on, string $by): void
     {

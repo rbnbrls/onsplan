@@ -1,6 +1,6 @@
 {
-    "name": "FamilyWell",
-    "short_name": "FamilyWell",
+    "name": "onsplan",
+    "short_name": "onsplan",
     "description": "Shared family life: expenses, tasks and more.",
     "start_url": "/dashboard",
     "scope": "/",

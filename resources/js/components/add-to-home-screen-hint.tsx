@@ -35,7 +35,7 @@ export function AddToHomeScreenHint() {
                     <Share className="size-4.5" />
                 </span>
                 <p className="flex-1 text-sm leading-snug">
-                    Add FamilyWell to your Home Screen: tap <Share className="mb-0.5 inline size-3.5" aria-label="Share" /> then{' '}
+                    Add onsplan to your Home Screen: tap <Share className="mb-0.5 inline size-3.5" aria-label="Share" /> then{' '}
                     <span className="font-semibold">Add to Home Screen</span>.
                 </p>
                 <button onClick={dismiss} aria-label="Dismiss" className="shrink-0 rounded-lg p-2 text-white/70 hover:text-white">

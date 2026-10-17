@@ -21,7 +21,7 @@ class User extends Authenticatable implements OAuthenticatable
     use HasApiTokens, HasFactory, HasPushSubscriptions, Notifiable;
 
     // Every user gets a pseudonymous analytics id up front (the column is NOT NULL). Sign-up may then swap it
-    // for the familywell.org visitor id they arrived with (RegisteredUserController::adoptAnalytics), so
+    // for the onsplan.nl visitor id they arrived with (RegisteredUserController::adoptAnalytics), so
     // `??=` leaves a preset one alone. Deliberately not fillable, like is_platform_admin.
     protected static function booted(): void
     {

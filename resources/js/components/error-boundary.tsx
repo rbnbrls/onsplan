@@ -94,7 +94,7 @@ export class ErrorBoundary extends React.Component<{ children: React.ReactNode }
     componentDidCatch(error: unknown, info: React.ErrorInfo) {
         const message = error instanceof Error ? error.message : String(error);
         if (reloadOnceOnChunkError(message)) return;
-        // eslint-disable-next-line no-console
+
         console.error('App crash:', error, info.componentStack);
         reportClientError(message, ((error as Error)?.stack ?? '') + '\n' + (info.componentStack ?? ''));
     }

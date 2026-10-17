@@ -11,7 +11,7 @@ export const AVATAR_TINTS = {
 };
 
 /**
- * FamilyWell Avatar — circular, initial-based (Playfair) or image.
+ * onsplan Avatar — circular, initial-based (Playfair) or image.
  * Tints match the family-member swatches from the source screens.
  */
 export function Avatar({

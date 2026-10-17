@@ -47,13 +47,13 @@ class AuthorizeController extends AuthorizationController
         $isAdminClient = $isBoardClient && OAuthClient::isPlatformAdminClient($request->query('client_id'));
         $scope = is_string($scope = $request->query('scope')) ? trim($scope) : '';
         if ($isBoardClient && $scope !== ($isAdminClient ? OAuthClient::ADMIN_SCOPE : 'board:identity')) {
-            abort(403, 'This sign-in can only ask for FamilyWell board access.');
+            abort(403, 'This sign-in can only ask for onsplan board access.');
         }
 
-        // Only platform admins get an admin.familywell.org code. A 403 (not a redirect back to the client)
+        // Only platform admins get an admin.onsplan.nl code. A 403 (not a redirect back to the client)
         // can't be turned into an open redirect, and non-admins have no reason to be here.
         if ($isAdminClient && $user && ! $user->is_platform_admin) {
-            abort(403, 'This FamilyWell account isn’t a platform admin.');
+            abort(403, 'This onsplan account isn’t a platform admin.');
         }
 
         return parent::authorize($psrRequest, $request, $psrResponse, $viewResponse);
